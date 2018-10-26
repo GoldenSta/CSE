@@ -32,17 +32,23 @@ print(5 % 3)
 print(9 % 4)
 
 # Defining Variables
-car_name = "Wiebe mobile"
-car_type = "Tesla"
-car_cylinders = 16
+car_name = "Wiebe mobile"  # string
+car_type = "Tesla"  # string
+car_cylinders = 16  #
 car_mile_per_gallon = 0.01
 
-print("I have a car called %s. It's pretty nice")
-print("It has ")
+print("I have a car called %s. It's pretty nice" % car_name)
+print("It has %d cylinder, but gets %f mpg" % (car_cylinders, car_mile_per_gallon))
 
 # Taking Input
 name = input("What is your name?")
 print("Hello %s " % name)
 
 age = input("How old are you?")
-print("")
+print("%s? You belong in a museum!" % age)
+
+# Recasting
+real_age = int(input("How old are you again?"))
+hidden_age = real_age + 5
+print(hidden_age)
+
