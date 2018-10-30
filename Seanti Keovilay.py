@@ -11,5 +11,5 @@ place10 = input("adjective")
 
 print("It was another %s day in the city of %s ." % (place1, place2))
 print("Well if you can call it a %s day. " % place3)
-print("Today is %s and I don't cre at all.")
+print("Today is %s and I don't care at all.")
 
