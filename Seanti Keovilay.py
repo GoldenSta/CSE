@@ -1,7 +1,7 @@
 place1 = input("adjective")
 place2 = input("noun")
 place3 = input("adjective")
-place4 = input("adjectives")
+place4 = input("noun")
 place5 = input("adjectives")
 place6 = input("verb")
 place7 = input("noun")
@@ -11,5 +11,4 @@ place10 = input("adjective")
 
 print("It was another %s day in the city of %s ." % (place1, place2))
 print("Well if you can call it a %s day. " % place3)
-print("Today is %s and I don't care at all.")
-
+print("Today is %s and I don't care at all." % place4)
