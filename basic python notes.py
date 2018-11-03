@@ -130,7 +130,7 @@ def grade_cal(percentage)
         return "C"
     elif percentage >= 60:
         return "D"
-    elif:
+    else:
         return "F"
 
 your_grade = grade_cal(82)
