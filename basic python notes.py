@@ -121,6 +121,7 @@ many = False
 if many:
     print("Go Outside")
 
+
 def grade_cal(percentage):
     if percentage >= 90:
         return "A"
@@ -133,11 +134,12 @@ def grade_cal(percentage):
     else:
         return "F"
 
+
 your_grade = grade_cal(82)
 print(your_grade)
 
 # Random numbers
-import random # This should be on line 1
+import random  # This should be on line 1
 print(random.randint(0, 100))
 
 # Equality Statements
