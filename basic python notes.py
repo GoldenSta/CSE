@@ -105,7 +105,7 @@ for i in range(5):
 
 # While loops
 a = 0
-while a <10:
+while a < 10:
     print(a)
     a = 1  # This is the name as a = a + 1
 
@@ -121,7 +121,8 @@ many = False
 if many:
     print("Go Outside")
 
-def grade_cal(percentage)
+
+def grade_cal(percentage):
     if percentage >= 90:
         return "A"
     elif percentage >= 80:
@@ -133,7 +134,20 @@ def grade_cal(percentage)
     else:
         return "F"
 
+
 your_grade = grade_cal(82)
 print(your_grade)
 
-# 
+# Random numbers
+import random  # This should be on line 1
+print(random.randint(0, 100))
+
+# Equality Statements
+print(5 > 3)
+print(5 >= 3)
+print(3 == 3)
+print(3 != 4)
+"""
+a = 3  # A is set to 3
+a == 3 # Is a equal to 3?
+"""
