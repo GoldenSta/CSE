@@ -11,8 +11,17 @@ while money > 0 and playing:
     print(dice_roll1, dice_roll12)
     role = dice_roll1 + dice_roll12
     if role == 7:
-        money += 5
-    print("Rolled a 7.")
-    total_roles += 1
-    top_money += 5
-    Top_round += 1
+        money += 4
+        print("Rolled a 7.")
+        total_roles += 1
+        Top_money += 4
+        Top_roles += 1
+        if money > Top_money:
+            money = Top_money
+    else:
+        money -= 1
+        print("Roll Again.")
+        total_roles += 1
+
+print("You took %d rounds" % total_roles)
+print("You have %r money" % Top_money)
