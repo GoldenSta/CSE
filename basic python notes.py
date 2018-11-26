@@ -107,7 +107,7 @@ for i in range(5):
 a = 0
 while a < 10:
     print(a)
-    a = 1  # This is the name as a = a + 1
+    a += 1  # This is the name as a = a + 1
 
 
 """
@@ -151,3 +151,28 @@ print(3 != 4)
 a = 3  # A is set to 3
 a == 3 # Is a equal to 3?
 """
+
+# Creating # List
+fruit = ["apples", "blueberries", "strawberries", "oranges",
+         "pineapples", "mango", "blackberries", "raspberries", "coconut"]
+print(fruit)
+
+# Pulling item from a list
+print(fruit[1])
+
+# Getting the length of a line
+print(len(fruit))
+print("The length of the line is %d" % len(fruit))
+
+# Modifying List
+fruit[8] = "Banana"
+print(fruit)
+
+# looping through list
+for item in fruit:
+    print(item)
+
+dream = ["midnight", "stars", "moon", "nightmare", "daydream", "sun", "shine"]
+print(dream)
+print(dream[2])
+print("The last thing on the list is %s" % dream)
