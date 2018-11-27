@@ -176,3 +176,37 @@ dream = ["midnight", "stars", "moon", "nightmare", "daydream", "sun", "shine"]
 print(dream)
 print(dream[2])
 print("The last thing on the list is %s" % dream)
+
+food_list = ["pizza", "pie", "chips", "soup", "sushi", "hot wings",
+             "chicken", "burrito", "tacos", "hamburger", "noodles"]
+
+# slicing
+print(food_list[2:5])
+print(food_list[3:4])
+print(food_list[10:])
+print(food_list[:5])
+
+# adding stuff to a list (part 1)
+food_list.append("orange")
+food_list.append("bacon")
+print(food_list)
+
+# everything is in the form object.method(parameters)
+
+# adding to a list (not at the end)
+food_list.insert(2, "ramen")
+print(food_list)
+
+# removing from a list
+food_list.remove("tacos")
+food_list.remove("pie")
+print(food_list)
+
+food_list.pop(0)
+print(food_list)
+
+drink_list = ["coke", "pepsi", "water"]
+drink_list.append("cherry pepsi")
+drink_list.remove("water")
+
+print(food_list.index("chicken"))
