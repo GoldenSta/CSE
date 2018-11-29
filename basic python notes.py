@@ -210,3 +210,16 @@ drink_list.append("cherry pepsi")
 drink_list.remove("water")
 
 print(food_list.index("chicken"))
+
+brands = ("apple", "samsung" "HTC")
+
+# changing things into a list
+string1 = "turquoise"
+list1 = list(string1)
+print(list1)
+
+# hangman hints
+for i in range(len(list)):  # i goes through all indices
+    if list[i] == "u":  # if we find a "U"
+        list.pop(i)  # remove the i-th index
+        list.insert(i, "*")  # put a * there instead

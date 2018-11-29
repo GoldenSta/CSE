@@ -13,13 +13,13 @@ words = [
 word_type = ["adjective?", "noun?", "adjective?", "noun?", "verb?", "noun?",
              "verb?", "noun?", "adjective?", "verb?"]
 
-print("It was another %d " % words[0])
+print("It was another %s " % words[0])
 print("day, in the city of %s" % words[1])
-print("Well if you can call it a %s")
-print("day. Today is %s")  # A holiday
-print("Everyone is %d ")
-print("around trying to finish their jobs to go %s")
-print(".Kids were %s")
-print("around the %s")
-print(", acting really %d")
-print("all the time but no one is %d")
+print("Well if you can call it a %s" % words[2])
+print("day. Today is %s" % words[3])  # A holiday
+print("Everyone is %s " % words[4])
+print("around trying to finish their jobs to go %s" % words[5])
+print(".Kids were %s" % words[6])
+print("around the %s" % words[7])
+print(", acting really %s" % words[8])
+print("all the time but no one is %s" % words[9])
