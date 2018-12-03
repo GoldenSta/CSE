@@ -84,11 +84,11 @@ f(5000)
 
 
 def distance(x1, y1, x2, y2):
-   dist = ((x2-x1) **2 + (y2-y1)**(1/2))
+   dist = ((x2-x1)**2 + (y2-y1)**(1/2))
    print(dist)
 
-
-   distance()
+   distance(0, 0, 3, 4)
+   distance(0, 0, 5, 12)
 
 
 # For Loops
@@ -211,15 +211,23 @@ drink_list.remove("water")
 
 print(food_list.index("chicken"))
 
+# Things I notice people do:
+# Some people have made lists with parentheses instead of brackets
 brands = ("apple", "samsung" "HTC")
+# This is a TUPLE, not a list. Tuples are immutable (cannot be changed)
 
 # changing things into a list
 string1 = "turquoise"
 list1 = list(string1)
 print(list1)
 
+# Changing back into a string (list→string)
+print("!".join(list1))
+
 # hangman hints
 for i in range(len(list)):  # i goes through all indices
     if list[i] == "u":  # if we find a "U"
         list.pop(i)  # remove the i-th index
         list.insert(i, "*")  # put a * there instead
+
+# 
