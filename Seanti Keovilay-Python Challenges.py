@@ -35,5 +35,5 @@ def challenge9(letter):
     else:
         return "This isn\'t a vowel"
 
-print(challenge9("a"))
 
+print(challenge9("a"))
