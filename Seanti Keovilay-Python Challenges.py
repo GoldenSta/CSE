@@ -38,13 +38,3 @@ def challenge9(letter):
 
 print(challenge9("a"))
 
-
-def challenge10():
-    for i in (1, 2, 3, 4, 5, 6, 7, 8, 9, 0):
-        return "This is numeric"
-    else:
-        return "This isn\'t numeric"
-
-
-print(challenge10())
-
