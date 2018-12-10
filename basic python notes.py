@@ -84,11 +84,11 @@ f(5000)
 
 
 def distance(x1, y1, x2, y2):
-   dist = ((x2-x1)**2 + (y2-y1)**(1/2))
-   print(dist)
+ dist = ((x2-x1)**2 + (y2-y1)**(1/2))
+ print(dist)
 
-   distance(0, 0, 3, 4)
-   distance(0, 0, 5, 12)
+distance(0, 0, 3, 4)
+distance(0, 0, 5, 12)
 
 
 # For Loops
