@@ -52,7 +52,6 @@ formula = secret_formula(start_point)
 print("We'd have {} beans, {} jars, and {} crates.".format(*formula))
 
 
-
 people = 20
 cats = 30
 dogs = 15
