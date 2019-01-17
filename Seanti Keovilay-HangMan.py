@@ -11,3 +11,7 @@ playing = True
 
 while guesses_made < 0 and playing:
         letter = input("Guess a letter")
+        if letter in random_word and letter not in letter_guesses:
+                print("you guess right")
+                guesses_made += 1
+                print("Number of guesses %d" % guesses_made)
