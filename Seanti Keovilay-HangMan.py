@@ -5,9 +5,14 @@ word = ['cloud', 'sleep', 'daydream', "midnight", "nightmare", "star",
         "sun", "moon", "Winter", "Summer", "Spring", "Fall", "cherry bomb"]
 letter_guesses = 0
 guesses_made = {}
-letter_guessed_right = {}
 random_word = random.choice(word)
 playing = True
+hidden = list(random_word)
+
+for i in range(len(list)):
+        if list[i] == "U":
+             list.pop(i)
+            list.insert(i, "*")
 
 while guesses_made < 0 and playing:
         letter = input("Guess a letter")
