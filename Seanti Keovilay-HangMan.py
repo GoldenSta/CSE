@@ -14,16 +14,25 @@ for i in range(len(hidden)):
         hidden.pop(i)
         hidden.insert(i, "*")
 
-while guesses_made < 0 and playing:
-        letter = input("Guess a letter")
-        if letter in random_word and letter not in letter_guesses:
-                print("you guess right")
-                guesses_made += 1
-                print("Guesses left: %d" % guesses_made)
-        if letter in letter_guesses:
-            print("You guessed this already.")
-        elif letter not in letter_guesses:
-            print("Wrong letter")
-            guesses_made -= 1
-            print("Guesses left: %d" % guesses_made)
-            letter_guesses.append(letter)
+while guesses_made > 0 and playing:
+    letter = input("Guess a letter")
+    if letter in random_word and letter not in letter_guesses:
+        print("you guess right")
+        guesses_made += 1
+        print("Guesses left: %d" % guesses_made)
+        if list(random_word) == hidden:
+            playing = False
+    if letter in letter_guesses:
+        print("You guessed this already.")
+    elif letter not in letter_guesses:
+        print("Wrong letter")
+        guesses_made -= 1
+        print("Guesses left: %d" % guesses_made)
+        letter_guesses.append(letter)
+
+if not playing:
+    print("you win")
+else:
+    print("loser")
+
+print("Word: %s" % random_word)
