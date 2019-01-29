@@ -29,8 +29,8 @@ while guesses_made > 0 and playing:
         letter_guesses.append(letter)
 
 if not playing:
-    print("you win")
+    print("Winner")
 else:
-    print("loser")
+    print("Game Over")
 
 print("Word: %s" % random_word)
