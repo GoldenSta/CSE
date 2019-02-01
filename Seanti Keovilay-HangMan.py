@@ -27,6 +27,9 @@ while guesses_made > 0 and playing:
         guesses_made -= 1
         print("Guesses left: %d" % guesses_made)
         letter_guesses.append(letter)
+    else:
+        print("You win")
+        playing = False
 
 if not playing:
     print("Winner")
