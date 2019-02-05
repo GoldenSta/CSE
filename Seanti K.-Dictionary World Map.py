@@ -1,14 +1,14 @@
 world_map = {
     "Rl9A": {
-        'NAME': "Mr. Wiebe's room",
-        'DESCRIPTION': "This is the room that you are in.",
+        'NAME': "Old Road",
+        'DESCRIPTION': "This is where it all began.",
         'PATHS': {
-            'NORTH': "PARKING_LOT"
+            'NORTH': "Your Old House"
         }
     },
-    'PARKING_LOT': {
-        'NAME': "A Parking Lot",
-        'DESCRIPTION': "There are a few cars parked here.",
+    'Car': {
+        'NAME': "Your Car",
+        'DESCRIPTION': "You arrived in the car with a bag inside.",
         'PATHS': {
             'SOUTH': "R19A"
         }
