@@ -1,27 +1,63 @@
 world_map = {
-    "Rl9A": {
+    "Road": {
         'NAME': "Old Road",
-        'DESCRIPTION': "This is where it all began.",
+        'DESCRIPTION': "The road brought you here.",
         'PATHS': {
-            'NORTH': "Your Old House"
+            'NORTH': "Your Old House",
+            'SOUTH': "Your Car"
         }
     },
-    'Car': {
+    'Your Car': {
         'NAME': "Your Car",
         'DESCRIPTION': "You arrived in the car with a bag inside.",
         'PATHS': {
-            'SOUTH': "R19A"
+            'NORTH': "Road",
+        }
+    },
+    "Your Old House": {
+        'NAME': "Your Old House",
+        'DESCRIPTION': "This is the house you grew up in your life.",
+        'PATHS': {
+            'NORTH': "Backyard",
+            'WEST': "West Side Forest",
+            'EAST': "East Side Forest",
+            'SOUTH': "Road"
+        }
+    },
+    'Backyard': {
+        'NAME': "Your Old Backyard",
+        'DESCRIPTION': "You always play here whenever something bad happen inside the house",
+        'PATHS': {
+            'SOUTH': "Your Old House",
+            'EAST': "Big Tree"
+        }
+    },
+    'West Side Forest': {
+        'NAME': "West Side Forest",
+        'DESCRIPTION': "You can hear the birds chirping from the north. There is a playground in front of you.",
+        'PATHS': {
+            'NORTH': "Field",
+            'WEST': "Playground",
+            'EAST': "Your Old House"
+        }
+    },
+    'Big Tree': {
+        'NAME': "Big Tree",
+        'DESCRIPTION': "The tree you planted back then grew really big.",
+        'PATHS': {
+            
         }
     }
 }
 
 # other variables
 directions = ["NORTH", "SOUTH", "EAST", "WEST", "UP", "DOWN"]
-current_node = world_map["Rl9A"]  # This is your current location
+current_node = world_map["Road"]  # This is your current location
 playing = True
 
 # controller
 while playing:
+    print("Do you remember the place?")
     print(current_node["NAME"])
     command = input(">_")
     if command.lower() in ['q', 'quit', 'exit']:
