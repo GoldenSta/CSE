@@ -45,7 +45,7 @@ world_map = {
         'NAME': "Big Tree",
         'DESCRIPTION': "The tree you planted back then grew really big.",
         'PATHS': {
-            
+
         }
     }
 }
