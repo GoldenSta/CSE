@@ -1,7 +1,7 @@
 world_map = {
     "Road": {
         'NAME': "Old Road",
-        'DESCRIPTION': "The road brought you here.",
+        'DESCRIPTION': "The road that brought you here.",
         'PATHS': {
             'NORTH': "Your Old House",
             'SOUTH': "Your Car"
@@ -25,7 +25,7 @@ world_map = {
         }
     },
     'Backyard': {
-        'NAME': "Your Old Backyard",
+        'NAME': "The Backyard",
         'DESCRIPTION': "You always play here whenever something bad happen inside the house",
         'PATHS': {
             'SOUTH': "Your Old House",
@@ -43,9 +43,79 @@ world_map = {
     },
     'Big Tree': {
         'NAME': "Big Tree",
-        'DESCRIPTION': "The tree you planted back then grew really big.",
+        'DESCRIPTION': "The tree you planted back grew bigger than you thought it would.",
         'PATHS': {
-
+            'EAST': "Lake",
+            'WEST': "Backyard"
+        }
+    },
+    'Field': {
+        'NAME': "Abandon Field",
+        'DESCRIPTION': "The field had been abandoned for many years.",
+        'PATHS': {
+            'SOUTH': "West Side Forest",
+            'NORTH': "Grassy Hill"
+        }
+    },
+    'Playground': {
+        'NAME': "Old Playground",
+        'DESCRIPTION': "It looks like it about to fall apart.",
+        'PATHS': {
+            'EAST': "West Side Forest"
+        }
+    },
+    'East Side Forest': {
+        'NAME': "East Side Forest",
+        'DESCRIPTION': "Keep going east, you can see the barn from here. North, there is a lake.",
+        'PATHS': {
+            'WEST': "Your Old House",
+            'EAST': "Barn",
+            'NORTH': "Lake"
+        }
+    },
+    'Crystal Lake': {
+        'NAME': "Crystal Lake",
+        'DESCRIPTION': "You loved going fishing here with your friends or family.",
+        'PATHS': {
+            'WEST': "Big Tree",
+            'SOUTH': "East Side Forest"
+        }
+    },
+    'Barn': {
+        'NAME': "Old Barn",
+        'DESCRIPTION': "It's filled with hay and nothing else.",
+        'PATHS': {
+            'WEST': "East Side Forest",
+            'SOUTH': "Tool Shed",
+            'NORTH': "Mini Farm"
+        }
+    },
+    'Tool Shed': {
+        'NAME': "Tool Shed",
+        'DESCRIPTION': "There is a fishing pole and a shovel inside.",
+        'PATHS': {
+            'NORTH': "Barn"
+        }
+    },
+    'Mini Farm': {
+        'NAME': "Mini Farm",
+        'DESCRIPTION': "You grew different types of plants here.",
+        'PATHS': {
+            'SOUTH': "Barn"
+        }
+    },
+    'Grassy Hill': {
+        'NAME': "Grassy Hill",
+        'DESCRIPTION': "You loved to cloud gaze here or star gaze.",
+        'PATHS': {
+            'SOUTH': "Field"
+        }
+    },
+    'Cave': {
+        'NAME': "Abandoned Cave",
+        'DESCRIPTION': "You never went inside there as it was too dark to see.",
+        'PATHS': {
+            'EAST': "Grassy Hill"
         }
     }
 }
@@ -57,8 +127,8 @@ playing = True
 
 # controller
 while playing:
-    print("Do you remember the place?")
     print(current_node["NAME"])
+    print(current_node['DESCRIPTION'])
     command = input(">_")
     if command.lower() in ['q', 'quit', 'exit']:
         playing = False
