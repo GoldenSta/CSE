@@ -18,9 +18,7 @@ world_map = {
         'NAME': "Your Old House",
         'DESCRIPTION': "This is the house you grew up in your life.",
         'PATHS': {
-            'NORTH': "Backyard",
-            'WEST': "West Side Forest",
-            'EAST': "East Side Forest",
+            'NORTH': "Front Door",
             'SOUTH': "Road"
         }
     },
@@ -28,24 +26,24 @@ world_map = {
         'NAME': "The Backyard",
         'DESCRIPTION': "You always play here whenever something bad happen inside the house",
         'PATHS': {
-            'SOUTH': "Your Old House",
+            'SOUTH': "Back Door",
             'EAST': "Big Tree"
         }
     },
-    'West Side Forest': {
+    'West Forest': {
         'NAME': "West Side Forest",
-        'DESCRIPTION': "You can hear the birds chirping from the north. There is a playground in front of you.",
+        'DESCRIPTION': "You can hear the birds chirping from the north. There is a playground straight ahead.",
         'PATHS': {
             'NORTH': "Field",
             'WEST': "Playground",
-            'EAST': "Your Old House"
+            'EAST': "West Door"
         }
     },
     'Big Tree': {
         'NAME': "Big Tree",
         'DESCRIPTION': "The tree you planted back grew bigger than you thought it would.",
         'PATHS': {
-            'EAST': "Lake",
+            'EAST': "Crystal Lake",
             'WEST': "Backyard"
         }
     },
@@ -53,7 +51,7 @@ world_map = {
         'NAME': "Abandon Field",
         'DESCRIPTION': "The field had been abandoned for many years.",
         'PATHS': {
-            'SOUTH': "West Side Forest",
+            'SOUTH': "West Forest",
             'NORTH': "Grassy Hill"
         }
     },
@@ -61,14 +59,14 @@ world_map = {
         'NAME': "Old Playground",
         'DESCRIPTION': "It looks like it about to fall apart.",
         'PATHS': {
-            'EAST': "West Side Forest"
+            'EAST': "West Forest"
         }
     },
-    'East Side Forest': {
-        'NAME': "East Side Forest",
+    'East Forest': {
+        'NAME': "East Forest",
         'DESCRIPTION': "Keep going east, you can see the barn from here. North, there is a lake.",
         'PATHS': {
-            'WEST': "Your Old House",
+            'WEST': "East Door",
             'EAST': "Barn",
             'NORTH': "Lake"
         }
@@ -78,14 +76,14 @@ world_map = {
         'DESCRIPTION': "You loved going fishing here with your friends or family.",
         'PATHS': {
             'WEST': "Big Tree",
-            'SOUTH': "East Side Forest"
+            'SOUTH': "East Forest"
         }
     },
     'Barn': {
         'NAME': "Old Barn",
         'DESCRIPTION': "It's filled with hay and nothing else.",
         'PATHS': {
-            'WEST': "East Side Forest",
+            'WEST': "East Forest",
             'SOUTH': "Tool Shed",
             'NORTH': "Mini Farm"
         }
@@ -117,6 +115,34 @@ world_map = {
         'PATHS': {
             'EAST': "Grassy Hill"
         }
+    },
+    'Front Door': {
+        'NAME': "Front Door",
+        'DESCRIPTION': "It leads to the living room if open.",
+        'PATHS': {
+            'SOUTH': "Road",
+            'NORTH': "Living Room"
+        }
+    },
+    'Living Room': {
+        'NAME': "Living Room",
+        'DESCRIPTION': "There is nothing inside the living room expect for the west door.",
+        'PATHS': {
+            'WEST': "West Door",
+            'EAST': "East Hallway"
+        }
+    },
+    'West Door': {
+        'NAME': "West Door",
+        'DESCRIPTION': "It leads to the West Forest.",
+        'PATHS': {
+            'EAST': "Living Room",
+            'WEST': "West Forest"
+        }
+    },
+    'East Hallway': {
+        'NAME': "East Hallway",
+        'DESCRIPTION': "T"
     }
 }
 
