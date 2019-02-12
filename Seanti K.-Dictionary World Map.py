@@ -68,7 +68,7 @@ world_map = {
         'PATHS': {
             'WEST': "East Door",
             'EAST': "Barn",
-            'NORTH': "Lake"
+            'NORTH': " Crystal Lake"
         }
     },
     'Crystal Lake': {
@@ -129,7 +129,7 @@ world_map = {
         'DESCRIPTION': "There is nothing inside the living room expect for the west door.",
         'PATHS': {
             'WEST': "West Door",
-            'EAST': "East Hallway"
+            'EAST': "Hallway"
         }
     },
     'West Door': {
@@ -140,9 +140,53 @@ world_map = {
             'WEST': "West Forest"
         }
     },
-    'East Hallway': {
+    'Hallway': {
         'NAME': "East Hallway",
-        'DESCRIPTION': "T"
+        'DESCRIPTION': "There is a bedroom to the north and the bathroom in the south. There is a door leading to the "
+                       "East Forest",
+        'PATHS': {
+            'NORTH': "Bedroom",
+            'SOUTH': "Bathroom",
+            'EAST': "East Door"
+        }
+    },
+    'Kitchen': {
+        'NAME': "Moldy Kitchen",
+        'DESCRIPTION': "The kitchen hasn't been clean for years.",
+        'PATHS': {
+            'SOUTH': "Living Room",
+            'NORTH': "Back Door"
+        }
+    },
+    'Back Door': {
+        'NAME': "Back Door",
+        'DESCRIPTION': "It leads to the backyard.",
+        'PATHS': {
+            'NORTH': "Backyard",
+            'SOUTH': "Kitchen"
+        }
+    },
+    'Bedroom': {
+        'NAME': "Your Bedroom",
+        'DESCRIPTION': "Everything is still in the same place.",
+        'PATHS': {
+            'SOUTH': "Hallway"
+        }
+    },
+    'Bathroom': {
+        'NAME': "Broken Bathroom",
+        'DESCRIPTION': "The place have been collected cobwebs.",
+        'PATHS': {
+            'NORTH': "Hallway"
+        }
+    },
+    'East Door': {
+        'NAME': "East Door",
+        'DESCRIPTION': "The door leads to the East Forest.",
+        'PATHS': {
+            'EAST': "East Forest",
+            'WEST': "Hallway"
+        }
     }
 }
 
