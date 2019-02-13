@@ -68,7 +68,7 @@ world_map = {
         'PATHS': {
             'WEST': "East Door",
             'EAST': "Barn",
-            'NORTH': " Crystal Lake"
+            'NORTH': "Crystal Lake"
         }
     },
     'Crystal Lake': {
