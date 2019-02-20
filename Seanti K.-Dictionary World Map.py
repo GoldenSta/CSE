@@ -3,18 +3,18 @@ world_map = {
         'NAME': "Old Road",
         'DESCRIPTION': "The road that brought you here.",
         'PATHS': {
-            'NORTH': "Your Old House",
-            'SOUTH': "Your Car"
+            'NORTH': "House",
+            'SOUTH': "Car"
         }
     },
-    'Your Car': {
+    'Car': {
         'NAME': "Your Car",
         'DESCRIPTION': "You arrived in the car with a bag inside.",
         'PATHS': {
             'NORTH': "Road",
         }
     },
-    "Your Old House": {
+    "House": {
         'NAME': "Your Old House",
         'DESCRIPTION': "This is the house you grew up in your life.",
         'PATHS': {
@@ -129,7 +129,8 @@ world_map = {
         'DESCRIPTION': "There is nothing inside the living room expect for the west door.",
         'PATHS': {
             'WEST': "West Door",
-            'EAST': "Hallway"
+            'EAST': "Hallway",
+            'NORTH': "Kitchen"
         }
     },
     'West Door': {
