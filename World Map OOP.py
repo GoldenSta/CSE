@@ -36,3 +36,8 @@ East_Forest = Room("East Forest", "Keep going east, you can see the barn from he
                    "Crystal Lake", None, "East Door", "Barn")
 Crystal_Lake = Room("Crystal Lake", "You loved going fishing here with your friends or family.", None,
                     "East Forest", "Big Tree", None)
+Barn = Room("Old Barn", "It's filled with hay and nothing else.", "Mini Farm", "Tool Shed", "East Forest", None)
+Tool_Shed = Room("Tool Shed", "There is a fishing pole and a shovel inside.", "Barn", None, None, None)
+Mini_Farm = Room("Mini Farm", "You grew different types of plants here.", None, "Barn", None, None)
+Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze.", None, "Field", None, None)
+Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see.", None, None, None, "Grassy Hill")

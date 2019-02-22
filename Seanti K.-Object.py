@@ -1,15 +1,22 @@
-class Camera(object):
-    def __init__(self, screen_resolution, space_left=100, color="Rose Gold"):
-        self.screen_resolution = screen_resolution
+class Dog(object):
+    def __init__(self, breed="pug", dob=2/4/5, color="Pale Gray", energy=100, gender="girl"):
+        self.breed = breed
         self.color = color
-        self.battery_left = 100
-        self.pictures_left = space_left
-        self.flashes = 10
-        self.brightness = 100
+        self.energy = energy
+        self.dob = dob
+        self.gender = gender
         self.functioning = True
 
-    def pictures(self, time):
+    def energy(self, time):
         if self.functioning:
-            if self.pictures_left <= 100:
-                print("There is space left.")
-                self.pictures_left -= time
+            if self.energy >= 100:
+                print("Your dog is full of energy.")
+                return
+            self.energy += 100
+
+            if self.energy > 100:
+                print("Your dog has some energy left.")
+                self.energy = 100
+
+            else:
+                print("")
