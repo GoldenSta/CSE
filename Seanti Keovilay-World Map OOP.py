@@ -41,3 +41,14 @@ Tool_Shed = Room("Tool Shed", "There is a fishing pole and a shovel inside.", "B
 Mini_Farm = Room("Mini Farm", "You grew different types of plants here.", None, "Barn", None, None)
 Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze.", None, "Field", None, None)
 Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see.", None, None, None, "Grassy Hill")
+Front_Door = Room("Front Door", "It leads to the living room if open.", "Living Room", "Road", None, None)
+Living_Room = Room("Living Room", "There is nothing inside the living room expect for the west door.", "Kitchen", None,
+                   "West Door", "Hallway")
+West_Door = Room("West Door", "It leads to the West Forest.", None, None, "West Forest", "Living Room")
+Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in the south. There is a door leading"
+                          "to the East Forest", "Bedroom", "Bathroom", None, "East Door")
+Kitchen = Room("Moldy Kitchen", "The kitchen hasn't been clean for years.", "Back Door", "Living Room", None, None)
+Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None)
+Bedroom = Room("Your Bedroom", "Everything is still in the same place.", None, "Hallway", None, None)
+Bathroom = Room("Broken Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None)
+East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East Forest")

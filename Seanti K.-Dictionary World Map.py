@@ -142,7 +142,7 @@ world_map = {
         }
     },
     'Hallway': {
-        'NAME': "East Hallway",
+        'NAME': "Hallway",
         'DESCRIPTION': "There is a bedroom to the north and the bathroom in the south. There is a door leading to the "
                        "East Forest",
         'PATHS': {
