@@ -7,11 +7,37 @@ class Room(object):
         self.south = south
         self.west = west
         self.east = east
+
+
+class Player(object):
+    def __init__(self, starting_location):
+        self.health = 100
+        self.inventory = []
+        self.current_location = starting_location
+
+    def move(self, new_location):
+        """This method moves a player to a new location
+
+        :param new_location: The room object that we move to
+        """
+        self.current_location = new_location
+
+    def find_room(self, direction):
+        """This method takes a direction, and finds the variable of the room.
+
+        :param direction: A string (all lowercase), with a cardinal direction
+        :return: A room object if it exists, None if it does not
+        """
+        room_name = getattr(self.current_location, direction)
+        return globals()[room_name]
+        # getarr(R19A, "north")
+
+
 # There are the instances of the rooms (Instantiation)
 
 
 # Option 1 - Use the variables, but fix later
-R19A = Room("Mr. Wiebe's Room")
+R19A = Room("Mr. Wiebe's Room", None)
 parking_lot = Room("The Parking Lot", None, R19A)
 R19A.north = parking_lot
 
@@ -52,3 +78,25 @@ Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen"
 Bedroom = Room("Your Bedroom", "Everything is still in the same place.", None, "Hallway", None, None)
 Bathroom = Room("Broken Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None)
 East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East Forest")
+
+player = Player(Road)
+
+directions = ['north', 'south', 'east', 'west', 'up', 'down']
+playing = True
+
+# controller
+while playing:
+    print(player.current_location.name)
+
+
+    command = input(">_")
+    if command.lower() in ['q', 'quit', 'exit']:
+        playing = False
+    elif command in directions:
+        try:
+            next_room = player.find_room(command)
+            player.move(next_room)
+        except KeyError:
+            print("I can't go that way.")
+    else:
+        print("Command not recognized.")
