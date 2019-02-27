@@ -9,9 +9,18 @@ class Room(object):
         self.east = east
 
 
+class Dog(object):
+    def __init__(self, breed="pug", dob=2/4/5, color="Pale Gray", energy=100, gender="girl", name="Lala"):
+        self.breed = breed
+        self.color = color
+        self.energy_left = energy
+        self.dob = dob
+        self.gender = gender
+        self.name = name
+
+
 class Player(object):
     def __init__(self, starting_location):
-        self.health = 100
         self.inventory = []
         self.current_location = starting_location
 
@@ -87,7 +96,7 @@ playing = True
 # controller
 while playing:
     print(player.current_location.name)
-
+    print(player.current_location.description)
 
     command = input(">_")
     if command.lower() in ['q', 'quit', 'exit']:
