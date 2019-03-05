@@ -5,4 +5,3 @@ class Item(object):
 
 class Marble(Item):
     def __init__(self):
-        
