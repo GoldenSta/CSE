@@ -148,7 +148,8 @@ world_map = {
         'PATHS': {
             'NORTH': "Bedroom",
             'SOUTH': "Bathroom",
-            'EAST': "East Door"
+            'EAST': "East Door",
+            'WEST': "Living Room"
         }
     },
     'Kitchen': {
