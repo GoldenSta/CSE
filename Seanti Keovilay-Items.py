@@ -1,12 +1,13 @@
 class Item(object):
-    def __init__(self, name, weight):
+    def __init__(self, name, weight, description):
         self.name = name
         self.weight = weight
+        self.description = description
 
 
 class Inventory(Item):
     def __init__(self, name):
-        super(Inventory, self).__init__(name, 0)
+        super(Inventory, self).__init__(name, 0, None)
         self.items = []
         self.space = 100
 
@@ -32,10 +33,42 @@ class Inventory(Item):
 
 class Flashlight(Item):
     def __init__(self):
-        super(Flashlight, self).__init__("Flashlight", 5)
+        super(Flashlight, self).__init__("Flashlight", 5, "The flashlight is old.")
         self.batteries = None
 
 
 class Battery(Item):
     def __init__(self):
-        super(Battery, self).__init__("Battery", 2)
+        super(Battery, self).__init__("Battery", 2, "You found some batters")
+
+
+class Keys(Item):
+    def __init__(self):
+        super(Keys, self).__init__("Keys", 1, "The keys are rusting a little.")
+
+
+class Pills(Item):
+    def __init__(self):
+        super(Pills, self).__init__("Pills", 6, "Sometimes you get sick so you take at least 3.")
+
+
+class Phone(Item):
+    def __init__(self):
+        super(Phone, self).__init__("Phone", 8, "You listen to music in hope it calms you down")
+        self.energy = 100
+
+
+class Marble(Item):
+    def __init__(self):
+        super(Marble, self).__init__("Marble", 1, "Its a orange marble with a slightly darker, rad star in the middle.")
+
+
+class Camera(Item):
+    def __init__(self):
+        super(Camera, self).__init__("Camera", 7, "Taking pictures or videos with the camera is you past time.")
+        self.energy = 100
+
+
+class Shovel(Item):
+    def __init__(self):
+        super(Shovel, self).__init__("Shovel", 15, "")
