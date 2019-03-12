@@ -28,6 +28,10 @@ class Inventory(Item):
             item1.batteries = item2
         if isinstance(item2, Flashlight) and isinstance(item1, Battery):
             item2.batteries = item1
+        if isinstance(item1, FishingPole) and isinstance(item2, Hook):
+            item1.hook = item2
+        if isinstance(item2, FishingPole) and isinstance(item1, Hook):
+            item2.hook = item1
             print("You combine %s and %d together.")
 
 
@@ -71,4 +75,15 @@ class Camera(Item):
 
 class Shovel(Item):
     def __init__(self):
-        super(Shovel, self).__init__("Shovel", 15, "")
+        super(Shovel, self).__init__("Shovel", 15, "There are two spikes on either side of the handle.")
+
+
+class FishingPole(Item):
+    def __init__(self):
+        super(FishingPole, self).__init__("Fishing Pole", 12, "The hook is missing somewhere.")
+        self.hook = None
+
+
+class Hook(Item):
+    def __init__(self):
+        super(Hook, self).__init__("Hook", 8, "It was stuck the cupboard in the kitchen.")
