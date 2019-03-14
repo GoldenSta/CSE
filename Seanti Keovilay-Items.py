@@ -13,19 +13,18 @@ class Inventory(Item):
 
     def add_item(self, item):
         self.items.append(item)
-        self.space -= 100
         print("You added a item in the bag.")
         print(self.space)
 
     def remove_item(self, item):
         self.items.remove(item)
-        self.space += 100
         print("You remove the item.")
         print(self.space)
 
     def combine_item(self, item1, item2):
         if isinstance(item1, Flashlight) and isinstance(item2, Battery):
             item1.batteries = item2
+            print("You combine the items together.")
         if isinstance(item2, Flashlight) and isinstance(item1, Battery):
             item2.batteries = item1
         if isinstance(item1, FishingPole) and isinstance(item2, Hook):
@@ -36,7 +35,7 @@ class Inventory(Item):
             item1.box = item2
         if isinstance(item2, Box) and isinstance(item1, Coin):
             item2.box = item1
-            print("You combine %s and %d together.")
+            print("You combine the items together.")
 
 
 class Flashlight(Item):
@@ -48,6 +47,7 @@ class Flashlight(Item):
 class Battery(Item):
     def __init__(self, name):
         super(Battery, self).__init__(name, 2, "You found some batters")
+        self.flashlight = None
 
 
 class Keys(Item):
@@ -91,6 +91,7 @@ class FishingPole(Item):
 class Hook(Item):
     def __init__(self, name):
         super(Hook, self).__init__(name, 8, "It was stuck the cupboard in the kitchen.")
+        self.FishingPole = None
 
 
 class Book(Item):
@@ -125,5 +126,15 @@ class Box(Item):
 
 
 class Character(object):
-    def __init__(self, name):
+    def __init__(self, name, weight):
         self.name = name
+        self.weight = weight
+
+
+battery = Battery("Battery")
+flashlight = Flashlight("Flashlight")
+coin = Coin("Coin")
+player_bag = Inventory("Bag")
+player_bag.add_item(coin)
+player_bag.remove_item(coin)
+player_bag.combine_item(Flashlight, Battery)
