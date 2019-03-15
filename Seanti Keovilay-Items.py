@@ -14,12 +14,10 @@ class Inventory(Item):
     def add_item(self, item):
         self.items.append(item)
         print("You added a item in the bag.")
-        print(self.space)
 
     def remove_item(self, item):
         self.items.remove(item)
         print("You remove the item.")
-        print(self.space)
 
     def combine_item(self, item1, item2):
         if isinstance(item1, Flashlight) and isinstance(item2, Battery):
@@ -27,12 +25,16 @@ class Inventory(Item):
             print("You combine the items together.")
         if isinstance(item2, Flashlight) and isinstance(item1, Battery):
             item2.batteries = item1
+            print("You combine the items together.")
         if isinstance(item1, FishingPole) and isinstance(item2, Hook):
             item1.hook = item2
+            print("You combine the items together.")
         if isinstance(item2, FishingPole) and isinstance(item1, Hook):
             item2.hook = item1
+            print("You combine the items together.")
         if isinstance(item1, Box) and isinstance(item2, Coin):
             item1.box = item2
+            print("You combine the items together.")
         if isinstance(item2, Box) and isinstance(item1, Coin):
             item2.box = item1
             print("You combine the items together.")
@@ -40,13 +42,13 @@ class Inventory(Item):
 
 class Flashlight(Item):
     def __init__(self, name):
-        super(Flashlight, self).__init__(name, 5, "The flashlight is old.")
+        super(Flashlight, self).__init__(name, 5, "The flashlight is old and the top is crack slightly.")
         self.batteries = None
 
 
 class Battery(Item):
     def __init__(self, name):
-        super(Battery, self).__init__(name, 2, "You found some batters")
+        super(Battery, self).__init__(name, 2, "You found some batteries.")
         self.flashlight = None
 
 
@@ -73,7 +75,8 @@ class Marble(Item):
 
 class Camera(Item):
     def __init__(self, name):
-        super(Camera, self).__init__(name, 7, "Taking pictures or videos with the camera is you past time.")
+        super(Camera, self).__init__(name, 7, "Taking pictures or videos with the camera is you past time. "
+                                              "The lens on the camera is broken. ")
         self.energy = 100
 
 
@@ -96,7 +99,7 @@ class Hook(Item):
 
 class Book(Item):
     def __init__(self, name):
-        super(Book, self).__init__(name, 10, "The is called 'A Wrinkle in Time'. You loved the book")
+        super(Book, self).__init__(name, 10, "The book is called 'A Wrinkle in Time'. You loved the book")
 
 
 class StuffedAnimal(Item):
@@ -106,12 +109,13 @@ class StuffedAnimal(Item):
 
 class Sweater(Item):
     def __init__(self, name):
-        super(Sweater, self).__init__(name, 9, "The sweater is still intact.")
+        super(Sweater, self).__init__(name, 9, "The sweater is still intact and it didn't seem ripped.")
 
 
 class Coin(Item):
     def __init__(self, name):
         super(Coin, self).__init__(name, 4, "The coin is small. It looks like you could fit it in the box.")
+        self.box = None
 
 
 class Crystal(Item):
@@ -121,7 +125,7 @@ class Crystal(Item):
 
 class Box(Item):
     def __init__(self, name):
-        super(Box, self).__init__(name, 13, "The bos is dirty from digging it from the ground.")
+        super(Box, self).__init__(name, 13, "The box is dirty from digging it from the ground.")
         self.coin = None
 
 
@@ -134,7 +138,10 @@ class Character(object):
 battery = Battery("Battery")
 flashlight = Flashlight("Flashlight")
 coin = Coin("Coin")
+box = Box("Box")
 player_bag = Inventory("Bag")
 player_bag.add_item(coin)
 player_bag.remove_item(coin)
-player_bag.combine_item(Flashlight, Battery)
+player_bag.add_item(battery)
+player_bag.combine_item(flashlight, battery)
+player_bag.combine_item(box, coin)
