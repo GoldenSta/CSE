@@ -196,13 +196,13 @@ book = Book("Book")
 sweater = Sweater("Sweater")
 player_bag = Inventory("Bag")
 
-Road = Room("Old Road", "The road that brought you here.", "House", "Car", None, None)
+Road = Room("Old Road", "The road that brought you here.", "House", "Car", None, None, "Coin")
 Car = Room("Your Car", "You arrived in the car with a bag inside.", "Road", None, None, None, "Keys")
-House = Room("Your Old House", "This is the house you grew up in your life.", "Front_Door", "Road", None, None)
+House = Room("Your Old House", "This is the house you grew up in your life.", "Front_Door", "Road", None, None, "Bag")
 Backyard = Room("The Backyard", "You always play here whenever something bad happen inside the house", None,
-                "Back_Door", None, "Big_Tree")
+                "Back_Door", None, "Big_Tree", "Battery")
 West_Forest = Room("West Forest", "You can hear the birds chirping from the north. There is a playground straight"
-                                  "ahead.", "Field", None, "Playground", "West_Door")
+                                  "ahead.", "Field", None, "Playground", "West_Door", "Flashlight")
 Big_Tree = Room("Big Tree", "The tree you planted back grew bigger than you thought it would.", None, None, "Backyard",
                 "Crystal_Lake", "Box")
 Field = Room("Abandon Field", "The field had been abandoned for many years.", "Grassy_Hill", "West_Forest",
