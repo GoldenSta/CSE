@@ -57,9 +57,9 @@ class Keys(Item):
         super(Keys, self).__init__(name, 1, "The keys are rusting a little.")
 
 
-class Pills(Item):
+class Medicine(Item):
     def __init__(self, name):
-        super(Pills, self).__init__(name, 6, "Sometimes you get sick so you take at least 3.")
+        super(Medicine, self).__init__(name, 6, "Sometimes you get sick so you take at least 3.")
 
 
 class Phone(Item):

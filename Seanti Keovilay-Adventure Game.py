@@ -196,19 +196,26 @@ hook = Hook("Hook")
 book = Book("A Wrinkle in Time")
 sweater = Sweater("Sweater")
 
-Road = Room("Old Road", "The road that brought you here.", "House", "Car", None, None, "Coin")
-Car = Room("Your Car", "You arrived in the car with a bag inside.", "Road", None, None, None, "Keys")
-House = Room("Your Old House", "This is the house you grew up in your life.", "Front_Door", "Road", None, None, "Bag")
+Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car"
+                        "and the house. ", "House", "Car", None, None,)
+Car = Room("Your Car", "You arrived in the car with a bag inside. You kind of wish you didn't come here but oh well,"
+                       "you're here now.", "Road", None, None, None, "Bag")
+House = Room("Your Old House", "This is the house you grew up in your life. The house seems rundown but"
+                               "still holding up and well. As you walk closer, you see something shinny on the ground",
+             "Front_Door", "Road", None, None, "Coin")
 Backyard = Room("The Backyard", "You always play here whenever something bad happen inside the house", None,
                 "Back_Door", None, "Big_Tree", "Battery")
-West_Forest = Room("West Forest", "You can hear the birds chirping from the north. There is a playground straight"
-                                  "ahead.", "Field", None, "Playground", "West_Door", "Flashlight")
-Big_Tree = Room("Big Tree", "The tree you planted back grew bigger than you thought it would.", None, None, "Backyard",
-                "Crystal_Lake", "Box")
+West_Forest = Room("West Forest", "The west forset doesn't seems too bad. You can hear the birds chirping from"
+                                  "the north. There is a playground straight ahead.", "Field", None, "Playground",
+                   "West_Door", "Flashlight")
+Big_Tree = Room("Big Tree", "The tree you planted back grew bigger than you thought it would. You could build a tree"
+                            "house up there but there are birds resting in some branches.", None, None,
+                "Backyard", "Crystal_Lake", "Box")
 Field = Room("Abandon Field", "The field had been abandoned for many years.", "Grassy_Hill", "West_Forest",
              None, None)
-Playground = Room("Old Playground", "It looks like it about to fall apart.", None, None, None,
-                  "West_Forest", "StuffedAnimal")
+Playground = Room("Old Playground", "It looks like it about to fall apart. The monkey bars look ready to snap, the"
+                                    "slides smelled funny and the swings are lying on the ground.", None, None,
+                  None, "West_Forest", "StuffedAnimal")
 East_Forest = Room("East Forest", "Keep going east, you can see the barn from here. North, there is a lake.",
                    "Crystal_Lake", None, "East_Door", "Barn")
 Crystal_Lake = Room("Crystal Lake", "You loved going fishing here with your friends or family.", None,
@@ -216,7 +223,7 @@ Crystal_Lake = Room("Crystal Lake", "You loved going fishing here with your frie
 Barn = Room("Old Barn", "It's filled with hay and nothing else.", "Mini_Farm", "Tool_Shed", "East_Forest", None)
 Tool_Shed = Room("Tool Shed", "There is a fishing pole and a shovel inside.", "Barn", None, None, None, "Shovel")
 Mini_Farm = Room("Mini Farm", "You grew different types of plants here.", None, "Barn", None, None, "FishingPole")
-Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze.", None, "Field", "Cave", None)
+Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze.", None, "Field", "Cave", None, "Phone")
 Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see.", None, None,
             None, "Grassy_Hill", "Marble")
 Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "Road", None, None)
@@ -240,6 +247,7 @@ playing = True
 while playing:
     print(player.current_location.name)
     print(player.current_location.description)
+    print(player.current_location.item)
 
     command = input(">_")
     if command.lower() in ['q', 'quit', 'exit']:
