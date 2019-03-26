@@ -211,18 +211,23 @@ West_Forest = Room("West Forest", "The west forset doesn't seems too bad. You ca
 Big_Tree = Room("Big Tree", "The tree you planted back grew bigger than you thought it would. You could build a tree"
                             "house up there but there are birds resting in some branches.", None, None,
                 "Backyard", "Crystal_Lake", "Box")
-Field = Room("Abandon Field", "The field had been abandoned for many years.", "Grassy_Hill", "West_Forest",
-             None, None)
-Playground = Room("Old Playground", "It looks like it about to fall apart. The monkey bars look ready to snap, the"
-                                    "slides smelled funny and the swings are lying on the ground.", None, None,
+Field = Room("Abandon Field", "The field had been abandoned for many years. The field is where you would finds"
+                              "different things that were lost.", "Grassy_Hill", "West_Forest", None, None)
+Playground = Room("Old Playground", "It looks like it about to fall apart. The monkey bars look ready to snap,"
+                                    "the slides were griffith and the swings are lying on the ground.", None, None,
                   None, "West_Forest", "StuffedAnimal")
 East_Forest = Room("East Forest", "Keep going east, you can see the barn from here. North, there is a lake.",
                    "Crystal_Lake", None, "East_Door", "Barn")
-Crystal_Lake = Room("Crystal Lake", "You loved going fishing here with your friends or family.", None,
-                    "East_Forest", "Big_Tree", None, "Crystal")
-Barn = Room("Old Barn", "It's filled with hay and nothing else.", "Mini_Farm", "Tool_Shed", "East_Forest", None)
-Tool_Shed = Room("Tool Shed", "There is a fishing pole and a shovel inside.", "Barn", None, None, None, "Shovel")
-Mini_Farm = Room("Mini Farm", "You grew different types of plants here.", None, "Barn", None, None, "FishingPole")
+Crystal_Lake = Room("Crystal Lake", "You loved going fishing here with your friends or family. As you walked closer"
+                                    "to the lake, you see something shinny in the water. You tired to reach"
+                                    "for it but couldn't as the water was too deep.", None, "East_Forest", "Big_Tree",
+                    None, "Crystal")
+Barn = Room("Old Barn", "It's filled with hay and nothing else.The barn used to have animals running around while the"
+                        "horses stay in their pen.", "Mini_Farm", "Tool_Shed", "East_Forest", None)
+Tool_Shed = Room("Tool Shed", "You entered the shed to see a shovel and a fishing pole. You thought for a moment"
+                              "that maybe you can use the fishing pole to get the thing out of the lake.",
+                 "Barn", None, None, None, "FishingPole")
+Mini_Farm = Room("Mini Farm", "You grew different types of plants here.", None, "Barn", None, None, "Shovel")
 Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze.", None, "Field", "Cave", None, "Phone")
 Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see.", None, None,
             None, "Grassy_Hill", "Marble")
@@ -232,8 +237,8 @@ Living_Room = Room("Living Room", "There is nothing inside the living room expec
 West_Door = Room("West Door", "It leads to the West Forest.", None, None, "West_Forest", "Living_Room")
 Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in the south. There is a door leading"
                           "to the East Forest", "Bedroom", "Bathroom", "Living_Room", "East_Door", "Camera")
-Kitchen = Room("Moldy Kitchen", "The kitchen hasn't been clean for years.",
-               "Back_Door", "Living_Room", None, None, "Hook")
+Kitchen = Room("Moldy Kitchen", "The kitchen hasn't been clean for years.", "Back_Door", "Living_Room",
+               None, None, "Hook")
 Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None)
 Bedroom = Room("Your Bedroom", "Everything is still in the same place.", None, "Hallway", None, None, "Sweater")
 Bathroom = Room("Broken Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None, "Medicine")
