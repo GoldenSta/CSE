@@ -196,38 +196,39 @@ hook = Hook("Hook")
 book = Book("A Wrinkle in Time")
 sweater = Sweater("Sweater")
 
-Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car"
-                        "and the house. ", "House", "Car", None, None,)
-Car = Room("Your Car", "You arrived in the car with a bag inside. You kind of wish you didn't come here but oh well,"
+Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car "
+                        "and the house. ", "House", "Car", None, None)
+Car = Room("Your Car", "You arrived in the car with a bag inside. You kind of wish you didn't come here but oh well, "
                        "you're here now.", "Road", None, None, None, "Bag")
-House = Room("Your Old House", "This is the house you grew up in your life. The house seems rundown but"
+House = Room("Your Old House", "This is the house you grew up in your whole life. The house seems rundown but "
                                "still holding up and well. As you walk closer, you see something shinny on the ground",
              "Front_Door", "Road", None, None, "Coin")
 Backyard = Room("The Backyard", "You always play here whenever something bad happen inside the house", None,
                 "Back_Door", None, "Big_Tree", "Battery")
-West_Forest = Room("West Forest", "The west forset doesn't seems too bad. You can hear the birds chirping from"
+West_Forest = Room("West Forest", "The west forest doesn't seems too bad. You can hear the birds chirping from "
                                   "the north. There is a playground straight ahead.", "Field", None, "Playground",
                    "West_Door", "Flashlight")
-Big_Tree = Room("Big Tree", "The tree you planted back grew bigger than you thought it would. You could build a tree"
+Big_Tree = Room("Big Tree", "The tree you planted back grew bigger than you thought it would. You could build a tree "
                             "house up there but there are birds resting in some branches.", None, None,
                 "Backyard", "Crystal_Lake", "Box")
-Field = Room("Abandon Field", "The field had been abandoned for many years. The field is where you would finds"
+Field = Room("Abandon Field", "The field had been abandoned for many years. The field is where you would finds "
                               "different things that were lost.", "Grassy_Hill", "West_Forest", None, None)
-Playground = Room("Old Playground", "It looks like it about to fall apart. The monkey bars look ready to snap,"
+Playground = Room("Old Playground", "It looks like it about to fall apart. The monkey bars look ready to snap, "
                                     "the slides were griffith and the swings are lying on the ground.", None, None,
                   None, "West_Forest", "StuffedAnimal")
 East_Forest = Room("East Forest", "Keep going east, you can see the barn from here. North, there is a lake.",
                    "Crystal_Lake", None, "East_Door", "Barn")
-Crystal_Lake = Room("Crystal Lake", "You loved going fishing here with your friends or family. As you walked closer"
-                                    "to the lake, you see something shinny in the water. You tired to reach"
-                                    "for it but couldn't as the water was too deep.", None, "East_Forest", "Big_Tree",
+Crystal_Lake = Room("Crystal Lake", "You loved going fishing here with your friends or family. As you walked closer to "
+                                    "the lake, you see something shinny in the water. You tired to reach for it but "
+                                    "couldn't as the water was too deep.", None, "East_Forest", "Big_Tree",
                     None, "Crystal")
-Barn = Room("Old Barn", "It's filled with hay and nothing else.The barn used to have animals running around while the"
+Barn = Room("Old Barn", "It's filled with hay and nothing else. The barn used to have animals running around while the "
                         "horses stay in their pen.", "Mini_Farm", "Tool_Shed", "East_Forest", None)
-Tool_Shed = Room("Tool Shed", "You entered the shed to see a shovel and a fishing pole. You thought for a moment"
+Tool_Shed = Room("Tool Shed", "You entered the shed to see a shovel and a fishing pole. You thought for a moment "
                               "that maybe you can use the fishing pole to get the thing out of the lake.",
                  "Barn", None, None, None, "FishingPole")
-Mini_Farm = Room("Mini Farm", "You grew different types of plants here.", None, "Barn", None, None, "Shovel")
+Mini_Farm = Room("Mini Farm", "You grew different types of plants here. You didn't like to buy the plants at the store "
+                              "so you grew your own.", None, "Barn", None, None, "Shovel")
 Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze.", None, "Field", "Cave", None, "Phone")
 Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see.", None, None,
             None, "Grassy_Hill", "Marble")
@@ -264,5 +265,15 @@ while playing:
             player.move(next_room)
         except KeyError:
             print("I can't go that way.")
+    elif "Pick up " in command:
+        item_name = command[8:]
+        found_item = None
+        for item in player.current_location.item:
+            if item_name == item_name:
+                found_item = item
+        if found_item is None:
+            print("I don't see a item")
+        else:
+            player.inventory
     else:
         print("Command not recognized.")
