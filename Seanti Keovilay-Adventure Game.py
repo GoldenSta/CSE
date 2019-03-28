@@ -54,11 +54,11 @@ class Inventory(Item):
         self.items = []
         self.space = 100
 
-    def add_item(self, item):
+    def pick_up_item(self, item):
         self.items.append(item)
         print("You added a item in the bag.")
 
-    def remove_item(self, item):
+    def drop_item(self, item):
         self.items.remove(item)
         print("You remove the item.")
 
@@ -85,19 +85,22 @@ class Inventory(Item):
 
 class Flashlight(Item):
     def __init__(self, name):
-        super(Flashlight, self).__init__(name, 5, "The flashlight is old and the top is crack slightly.")
+        super(Flashlight, self).__init__(name, 5, "The flashlight is old and the top is crack slightly. "
+                                                  "At least it still works, maybe.")
         self.batteries = None
 
 
 class Battery(Item):
     def __init__(self, name):
-        super(Battery, self).__init__(name, 2, "You found some batteries.")
+        super(Battery, self).__init__(name, 2, "You found some batteries. Lucky that you found some for the flashlight "
+                                               "but wondered why they were here. Meh, nothing makes sense anyway.")
         self.flashlight = None
 
 
 class Keys(Item):
     def __init__(self, name):
-        super(Keys, self).__init__(name, 1, "The keys are rusting a little.")
+        super(Keys, self).__init__(name, 1, "The keys are rusting from old age. You don't know how long the keys "
+                                            "were here. Maybe around 3 or 4 years.")
 
 
 class Medicine(Item):
@@ -107,7 +110,7 @@ class Medicine(Item):
 
 class Phone(Item):
     def __init__(self, name):
-        super(Phone, self).__init__(name, 8, "You listen to music in hope it calms you down")
+        super(Phone, self).__init__(name, 8, "You listen to music in hope it calms you down.")
         self.energy = 100
 
 
@@ -201,7 +204,7 @@ Road = Room("Old Road", "The road that brought you here. You look around the roa
 Car = Room("Your Car", "You arrived in the car with a bag inside. You kind of wish you didn't come here but oh well, "
                        "you're here now.", "Road", None, None, None, "Bag")
 House = Room("Your Old House", "This is the house you grew up in your whole life. The house seems rundown but "
-                               "still holding up and well. As you walk closer, you see something shinny on the ground",
+                               "still holding up and well. As you walk closer, you see something shinny on the ground.",
              "Front_Door", "Road", None, None, "Coin")
 Backyard = Room("The Backyard", "You always play here whenever something bad happen inside the house", None,
                 "Back_Door", None, "Big_Tree", "Battery")
@@ -274,6 +277,7 @@ while playing:
         if found_item is None:
             print("I don't see a item")
         else:
-            player.inventory
+            player.inventory.append(found_item)
+            player.current_location.item.remove(found_item)
     else:
         print("Command not recognized.")
