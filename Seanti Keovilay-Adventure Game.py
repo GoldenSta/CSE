@@ -49,9 +49,9 @@ class Item(object):
 
 
 class Inventory(Item):
-    def __init__(self, name):
+    def __init__(self, name, items=[]):
         super(Inventory, self).__init__(name, 0, None)
-        self.items = []
+        self.items = items
         self.space = 100
 
     def pick_up_item(self, item):
@@ -105,30 +105,35 @@ class Keys(Item):
 
 class Medicine(Item):
     def __init__(self, name):
-        super(Medicine, self).__init__(name, 6, "Sometimes you get sick so you take at least 3.")
+        super(Medicine, self).__init__(name, 6, "Sometimes you get sick when you were a child. Sometimes the medicine "
+                                                "would taste funny but made you feel better.")
 
 
 class Phone(Item):
     def __init__(self, name):
-        super(Phone, self).__init__(name, 8, "You listen to music in hope it calms you down.")
+        super(Phone, self).__init__(name, 8, "You listen to music in hope it calms you down. Your parents really "
+                                             "didn't understand your taste in music.")
         self.energy = 100
 
 
 class Marble(Item):
     def __init__(self, name):
-        super(Marble, self).__init__(name, 1, "Its a orange marble with a slightly darker, rad star in the middle.")
+        super(Marble, self).__init__(name, 1, "Its a orange marble with a rad star in the middle. The marble looks "
+                                              "like its made from glass.")
 
 
 class Camera(Item):
     def __init__(self, name):
         super(Camera, self).__init__(name, 7, "Taking pictures or videos with the camera is you past time. "
-                                              "The lens on the camera is broken. ")
+                                              "The lens on the camera is broken. Its a shame that its broken but maybe "
+                                              "the videos or pictures aren't deleted.")
         self.energy = 100
 
 
 class Shovel(Item):
     def __init__(self, name):
-        super(Shovel, self).__init__(name, 15, "There are two spikes on either side of the handle.")
+        super(Shovel, self).__init__(name, 15, "There are two spikes on either side of the handle. The shovel is worn "
+                                               "out and beat up by the years of being used to dig holes.")
 
 
 class FishingPole(Item):
@@ -256,8 +261,11 @@ playing = True
 while playing:
     print(player.current_location.name)
     print(player.current_location.description)
-    print(player.current_location.item)
 
+    if len(player.current_location.item) > 0:
+        print("You found a item.")
+        for num, current_item in enumerate(player.current_location.item):
+            print(str)
     command = input(">_")
     if command.lower() in ['q', 'quit', 'exit']:
         print("Bye")
@@ -274,10 +282,19 @@ while playing:
         for item in player.current_location.item:
             if item_name == item_name:
                 found_item = item
+                print("You pick up the %s." % item_name)
         if found_item is None:
             print("I don't see a item")
         else:
             player.inventory.append(found_item)
             player.current_location.item.remove(found_item)
+            print("You picked it up")
+    elif "Drop item" in command:
+        item_name = command[8:]
+        drop_item = None
+        for item in player.inventory:
+            if item_name == item_name:
+                drop_item = item
+                print("You drop the %s." % item_name)
     else:
         print("Command not recognized.")
