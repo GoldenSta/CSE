@@ -1,12 +1,12 @@
 class Room(object):
-    def __init__(self, name, description, north=None, south=None, west=None, east=None, item=None):
+    def __init__(self, name, description, north=None, south=None, west=None, east=None, _item=None):
         self.name = name
         self.description = description
         self.north = north
         self.south = south
         self.west = west
         self.east = east
-        self.item = item
+        self.item = _item
 
 
 class Dog(object):
@@ -49,38 +49,41 @@ class Item(object):
 
 
 class Inventory(Item):
-    def __init__(self, name, items=[]):
+    def __init__(self, name, items=None):
         super(Inventory, self).__init__(name, 0, None)
+        if items is None:
+            items = []
         self.items = items
         self.space = 100
 
-    def pick_up_item(self, item):
-        self.items.append(item)
+    def pick_up_item(self, _item):
+        self.items.append(_item)
         print("You added a item in the bag.")
 
-    def drop_item(self, item):
-        self.items.remove(item)
+    def drop_item(self, _item):
+        self.items.remove(_item)
         print("You remove the item.")
 
     def combine_item(self, item1, item2):
-        if isinstance(item1, Flashlight) and isinstance(item2, Battery):
-            item1.batteries = item2
-            print("You combine the items together.")
-        if isinstance(item2, Flashlight) and isinstance(item1, Battery):
-            item2.batteries = item1
-            print("You combine the items together.")
-        if isinstance(item1, FishingPole) and isinstance(item2, Hook):
-            item1.hook = item2
-            print("You combine the items together.")
-        if isinstance(item2, FishingPole) and isinstance(item1, Hook):
-            item2.hook = item1
-            print("You combine the items together.")
-        if isinstance(item1, Box) and isinstance(item2, Coin):
-            item1.box = item2
-            print("You combine the items together.")
-        if isinstance(item2, Box) and isinstance(item1, Coin):
-            item2.box = item1
-            print("You combine the items together.")
+        if self.items is not None:
+            if isinstance(item1, Flashlight) and isinstance(item2, Battery):
+                item1.batteries = item2
+                print("You combine the items together.")
+            if isinstance(item2, Flashlight) and isinstance(item1, Battery):
+                item2.batteries = item1
+                print("You combine the items together.")
+            if isinstance(item1, FishingPole) and isinstance(item2, Hook):
+                item1.hook = item2
+                print("You combine the items together.")
+            if isinstance(item2, FishingPole) and isinstance(item1, Hook):
+                item2.hook = item1
+                print("You combine the items together.")
+            if isinstance(item1, Box) and isinstance(item2, Coin):
+                item1.box = item2
+                print("You combine the items together.")
+            if isinstance(item2, Box) and isinstance(item1, Coin):
+                item2.box = item1
+                print("You combine the items together.")
 
 
 class Flashlight(Item):
@@ -180,6 +183,18 @@ class Box(Item):
         self.coin = None
 
 
+class Machete(Item):
+    def __init__(self, name):
+        super(Machete, self).__init__(name, 15, "The machete seems old and rusty. It looks like its been under water "
+                                                "for a very long time.")
+
+
+class Stone(Item):
+    def __init__(self, name):
+        super(Stone, self).__init__(name, 8, "The stone feels smooth and the color looks beautiful in the light. The "
+                                             "color is a light orange.")
+
+
 class Character(object):
     def __init__(self, name, weight):
         self.name = name
@@ -203,55 +218,58 @@ crystal = Crystal("Crystal")
 hook = Hook("Hook")
 book = Book("A Wrinkle in Time")
 sweater = Sweater("Sweater")
+machete = Machete("Machete")
+stone = Stone("Stone")
 
 Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car "
-                        "and the house. ", "House", "Car", None, None)
+                        "and the house. ", "House", "Car", None, None, [phone])
 Car = Room("Your Car", "You arrived in the car with a bag inside. You kind of wish you didn't come here but oh well, "
-                       "you're here now.", "Road", None, None, None, "Bag")
+                       "you're here now.", "Road", None, None, None, [player_bag])
 House = Room("Your Old House", "This is the house you grew up in your whole life. The house seems rundown but "
                                "still holding up and well. As you walk closer, you see something shinny on the ground.",
-             "Front_Door", "Road", None, None, "Coin")
+             "Front_Door", "Road", None, None, [coin])
 Backyard = Room("The Backyard", "You always play here whenever something bad happen inside the house", None,
-                "Back_Door", None, "Big_Tree", "Battery")
+                "Back_Door", None, "Big_Tree", [battery])
 West_Forest = Room("West Forest", "The west forest doesn't seems too bad. You can hear the birds chirping from "
                                   "the north. There is a playground straight ahead.", "Field", None, "Playground",
-                   "West_Door", "Flashlight")
+                   "West_Door", [flashlight])
 Big_Tree = Room("Big Tree", "The tree you planted back grew bigger than you thought it would. You could build a tree "
                             "house up there but there are birds resting in some branches.", None, None,
-                "Backyard", "Crystal_Lake", "Box")
+                "Backyard", "Crystal_Lake", [box])
 Field = Room("Abandon Field", "The field had been abandoned for many years. The field is where you would finds "
                               "different things that were lost.", "Grassy_Hill", "West_Forest", None, None)
 Playground = Room("Old Playground", "It looks like it about to fall apart. The monkey bars look ready to snap, "
                                     "the slides were griffith and the swings are lying on the ground.", None, None,
-                  None, "West_Forest", "StuffedAnimal")
+                  None, "West_Forest", [stuffed_animal])
 East_Forest = Room("East Forest", "Keep going east, you can see the barn from here. North, there is a lake.",
-                   "Crystal_Lake", None, "East_Door", "Barn")
+                   "Crystal_Lake", None, "East_Door", "Barn", [crystal])
 Crystal_Lake = Room("Crystal Lake", "You loved going fishing here with your friends or family. As you walked closer to "
                                     "the lake, you see something shinny in the water. You tired to reach for it but "
                                     "couldn't as the water was too deep.", None, "East_Forest", "Big_Tree",
-                    None, "Crystal")
+                    None, [machete])
 Barn = Room("Old Barn", "It's filled with hay and nothing else. The barn used to have animals running around while the "
-                        "horses stay in their pen.", "Mini_Farm", "Tool_Shed", "East_Forest", None)
-Tool_Shed = Room("Tool Shed", "You entered the shed to see a shovel and a fishing pole. You thought for a moment "
-                              "that maybe you can use the fishing pole to get the thing out of the lake.",
-                 "Barn", None, None, None, "FishingPole")
+                        "horses stay in their pen. You look around and see a shovel where it was suppose to be in "
+                        "the tool shed.", "Mini_Farm", "Tool_Shed", "East_Forest", None, [shovel])
+Tool_Shed = Room("Tool Shed", "You entered the shed to see a fishing pole. You thought for a moment that maybe "
+                              "you can use the fishing pole to get the thing out of the lake.",
+                 "Barn", None, None, None, [fishing_pole])
 Mini_Farm = Room("Mini Farm", "You grew different types of plants here. You didn't like to buy the plants at the store "
-                              "so you grew your own.", None, "Barn", None, None, "Shovel")
-Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze.", None, "Field", "Cave", None, "Phone")
+                              "so you grew your own.", None, "Barn", None, None)
+Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze.", None, "Field", "Cave", None, )
 Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see.", None, None,
-            None, "Grassy_Hill", "Marble")
+            None, "Grassy_Hill", [marble])
 Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "Road", None, None)
 Living_Room = Room("Living Room", "There is nothing inside the living room expect for the west door.", "Kitchen", None,
-                   "West_Door", "Hallway", "Book")
+                   "West_Door", "Hallway", [book])
 West_Door = Room("West Door", "It leads to the West Forest.", None, None, "West_Forest", "Living_Room")
 Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in the south. There is a door leading"
-                          "to the East Forest", "Bedroom", "Bathroom", "Living_Room", "East_Door", "Camera")
+                          "to the East Forest", "Bedroom", "Bathroom", "Living_Room", "East_Door", [camera])
 Kitchen = Room("Moldy Kitchen", "The kitchen hasn't been clean for years.", "Back_Door", "Living_Room",
-               None, None, "Hook")
-Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None)
-Bedroom = Room("Your Bedroom", "Everything is still in the same place.", None, "Hallway", None, None, "Sweater")
-Bathroom = Room("Broken Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None, "Medicine")
-East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East_Forest")
+               None, None, [hook])
+Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None, [keys])
+Bedroom = Room("Your Bedroom", "Everything is still in the same place.", None, "Hallway", None, None, [sweater])
+Bathroom = Room("Broken Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None, [medicine])
+East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East_Forest", {stone})
 
 player = Player(Road)
 
@@ -265,7 +283,7 @@ while playing:
     if len(player.current_location.item) > 0:
         print("You found a item.")
         for num, current_item in enumerate(player.current_location.item):
-            print(str)
+            print(str(num + 1) + ": " + current_item.name)
     command = input(">_")
     if command.lower() in ['q', 'quit', 'exit']:
         print("Bye")
