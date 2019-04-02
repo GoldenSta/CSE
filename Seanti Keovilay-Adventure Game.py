@@ -42,15 +42,14 @@ class Player(object):
 
 
 class Item(object):
-    def __init__(self, name, weight, description):
+    def __init__(self, name, description):
         self.name = name
-        self.weight = weight
         self.description = description
 
 
 class Inventory(Item):
     def __init__(self, name, items=None):
-        super(Inventory, self).__init__(name, 0, None)
+        super(Inventory, self).__init__(name, None)
         if items is None:
             items = []
         self.items = items
@@ -88,111 +87,127 @@ class Inventory(Item):
 
 class Flashlight(Item):
     def __init__(self, name):
-        super(Flashlight, self).__init__(name, 5, "The flashlight is old and the top is crack slightly. "
-                                                  "At least it still works, maybe.")
+        super(Flashlight, self).__init__(name, "The flashlight is old and the top is crack slightly. At least it "
+                                               "still works, maybe.")
         self.batteries = None
 
 
 class Battery(Item):
     def __init__(self, name):
-        super(Battery, self).__init__(name, 2, "You found some batteries. Lucky that you found some for the flashlight "
-                                               "but wondered why they were here. Meh, nothing makes sense anyway.")
+        super(Battery, self).__init__(name, "You found some batteries. Lucky that you found some for the flashlight "
+                                            "but wondered why they were here. Meh, nothing makes sense anyway.")
         self.flashlight = None
 
 
 class Keys(Item):
     def __init__(self, name):
-        super(Keys, self).__init__(name, 1, "The keys are rusting from old age. You don't know how long the keys "
-                                            "were here. Maybe around 3 or 4 years.")
+        super(Keys, self).__init__(name, "The keys are rusting from old age. You don't know how long the keys were "
+                                         "here. Maybe around 3 or 4 years.")
 
 
 class Medicine(Item):
     def __init__(self, name):
-        super(Medicine, self).__init__(name, 6, "Sometimes you get sick when you were a child. Sometimes the medicine "
-                                                "would taste funny but made you feel better.")
+        super(Medicine, self).__init__(name, "Sometimes you get sick when you were a child. Sometimes the medicine "
+                                             "would taste funny but made you feel better.")
 
 
 class Phone(Item):
     def __init__(self, name):
-        super(Phone, self).__init__(name, 8, "You listen to music in hope it calms you down. Your parents really "
-                                             "didn't understand your taste in music.")
+        super(Phone, self).__init__(name, "You listen to music in hope it calms you down. Your parents really didn't "
+                                          "understand your taste in music.")
         self.energy = 100
 
 
 class Marble(Item):
     def __init__(self, name):
-        super(Marble, self).__init__(name, 1, "Its a orange marble with a rad star in the middle. The marble looks "
-                                              "like its made from glass.")
+        super(Marble, self).__init__(name, "Its a orange marble with a rad star in the middle. The marble looks like "
+                                           "its made from glass.")
 
 
 class Camera(Item):
     def __init__(self, name):
-        super(Camera, self).__init__(name, 7, "Taking pictures or videos with the camera is you past time. "
-                                              "The lens on the camera is broken. Its a shame that its broken but maybe "
-                                              "the videos or pictures aren't deleted.")
+        super(Camera, self).__init__(name, "Taking pictures or videos with the camera is you past time. The lens on "
+                                           "the camera is broken. Its a shame that its broken but maybe the videos or "
+                                           "pictures aren't deleted.")
         self.energy = 100
 
 
 class Shovel(Item):
     def __init__(self, name):
-        super(Shovel, self).__init__(name, 15, "There are two spikes on either side of the handle. The shovel is worn "
-                                               "out and beat up by the years of being used to dig holes.")
+        super(Shovel, self).__init__(name, "There are two spikes on either side of the handle. The shovel is worn out "
+                                           "and beat up by the years of being used to dig holes.")
 
 
 class FishingPole(Item):
     def __init__(self, name):
-        super(FishingPole, self).__init__(name, 12, "The hook is missing somewhere.")
+        super(FishingPole, self).__init__(name, "The fishing pole seems like it could need some repair but its too old "
+                                                "already. Looking closer at the fishing pole, the hook is "
+                                                "missing somewhere.")
         self.hook = None
 
 
 class Hook(Item):
     def __init__(self, name):
-        super(Hook, self).__init__(name, 8, "It was stuck the cupboard in the kitchen.")
+        super(Hook, self).__init__(name, "It was stuck the cupboard in the kitchen.")
         self.FishingPole = None
 
 
 class Book(Item):
     def __init__(self, name):
-        super(Book, self).__init__(name, 10, "The book is called 'A Wrinkle in Time'. You loved the book")
+        super(Book, self).__init__(name, "The book is called 'A Wrinkle in Time'. You loved the book")
 
 
 class StuffedAnimal(Item):
     def __init__(self, name):
-        super(StuffedAnimal, self).__init__(name, 6, "Its a stuffed bunny. The fur seems old and dirty.")
+        super(StuffedAnimal, self).__init__(name, "Its a stuffed bunny. The fur seems old and dirty.")
 
 
 class Sweater(Item):
     def __init__(self, name):
-        super(Sweater, self).__init__(name, 9, "The sweater is still intact and it didn't seem ripped.")
+        super(Sweater, self).__init__(name, "The sweater is still intact and it didn't seem ripped.")
 
 
 class Coin(Item):
     def __init__(self, name):
-        super(Coin, self).__init__(name, 4, "The coin is small. It looks like you could fit it in the box.")
+        super(Coin, self).__init__(name, "The coin is small. It looks like you could fit it in the box.")
         self.box = None
 
 
 class Crystal(Item):
     def __init__(self, name):
-        super(Crystal, self).__init__(name, 12, "Shine it in the light and it makes a rainbow")
+        super(Crystal, self).__init__(name, "Shine it in the light and it makes a rainbow")
 
 
 class Box(Item):
     def __init__(self, name):
-        super(Box, self).__init__(name, 13, "The box is dirty from digging it from the ground.")
+        super(Box, self).__init__(name, "The box is dirty from digging it from the ground.")
         self.coin = None
 
 
 class Machete(Item):
     def __init__(self, name):
-        super(Machete, self).__init__(name, 15, "The machete seems old and rusty. It looks like its been under water "
-                                                "for a very long time.")
+        super(Machete, self).__init__(name, "The machete seems old and rusty. It looks like its been under water for "
+                                            "a very long time.")
 
 
 class Stone(Item):
     def __init__(self, name):
-        super(Stone, self).__init__(name, 8, "The stone feels smooth and the color looks beautiful in the light. The "
-                                             "color is a light orange.")
+        super(Stone, self).__init__(name, "The stone feels smooth and the color looks beautiful in the light. The "
+                                          "color is a light orange with a bit of yellow around it.")
+
+
+class Notebook(Item):
+    def __init__(self, name):
+        super(Notebook, self).__init__(name, "Your notebook wis still filled with things you drew about or writing "
+                                             "what happen today. There are lots of drawings about the ocean or on "
+                                             "land. There is even a writing part of the notebook but it seems faded. "
+                                             "The cover of the notebook is black with a faded white title.")
+
+
+class Pen(Item):
+    def __init__(self, name):
+        super(Pen, self).__init__(name, "Its a white pen with a star printed on one side. The pen seems out of ink "
+                                        "when you shake it.")
 
 
 class Character(object):
@@ -220,6 +235,8 @@ book = Book("A Wrinkle in Time")
 sweater = Sweater("Sweater")
 machete = Machete("Machete")
 stone = Stone("Stone")
+notebook = Notebook("Notebook")
+pen = Pen("Pen")
 
 Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car "
                         "and the house. ", "House", "Car", None, None, [phone])
@@ -237,7 +254,7 @@ Big_Tree = Room("Big Tree", "The tree you planted back grew bigger than you thou
                             "house up there but there are birds resting in some branches.", None, None,
                 "Backyard", "Crystal_Lake", [box])
 Field = Room("Abandon Field", "The field had been abandoned for many years. The field is where you would finds "
-                              "different things that were lost.", "Grassy_Hill", "West_Forest", None, None)
+                              "different things that were lost.", "Grassy_Hill", "West_Forest", None, None, [notebook])
 Playground = Room("Old Playground", "It looks like it about to fall apart. The monkey bars look ready to snap, "
                                     "the slides were griffith and the swings are lying on the ground.", None, None,
                   None, "West_Forest", [stuffed_animal])
@@ -255,7 +272,8 @@ Tool_Shed = Room("Tool Shed", "You entered the shed to see a fishing pole. You t
                  "Barn", None, None, None, [fishing_pole])
 Mini_Farm = Room("Mini Farm", "You grew different types of plants here. You didn't like to buy the plants at the store "
                               "so you grew your own.", None, "Barn", None, None)
-Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze.", None, "Field", "Cave", None, )
+Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze. There used to be just plain grass but "
+                                  "now there are some wild flowers growing.", None, "Field", "Cave", None, [pen])
 Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see.", None, None,
             None, "Grassy_Hill", [marble])
 Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "Road", None, None)
