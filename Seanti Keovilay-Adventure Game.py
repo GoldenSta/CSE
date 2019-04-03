@@ -210,6 +210,19 @@ class Pen(Item):
                                         "when you shake it.")
 
 
+class Seeds(Item):
+    def __init__(self, name):
+        super(Seeds, self).__init__(name, "A packet of sunflower seeds were left in the dust. There are some dust "
+                                          "covering the pictures of the sunflower.")
+
+
+class Rose(Item):
+    def __init__(self, name):
+        super(Rose, self).__init__(name, "Its a blackish red rose sitting by the front door. It still has its petals "
+                                         "intact but it shouldn't since you don't know how its not dead. Weirdly "
+                                         "enough that it doesn't have any thorns on the stem.")
+
+
 class Character(object):
     def __init__(self, name, weight):
         self.name = name
@@ -237,6 +250,8 @@ machete = Machete("Machete")
 stone = Stone("Stone")
 notebook = Notebook("Notebook")
 pen = Pen("Pen")
+seeds = Seeds("Seeds")
+rose = Rose("Rose")
 
 Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car "
                         "and the house. ", "House", "Car", None, None, [phone])
@@ -271,15 +286,15 @@ Tool_Shed = Room("Tool Shed", "You entered the shed to see a fishing pole. You t
                               "you can use the fishing pole to get the thing out of the lake.",
                  "Barn", None, None, None, [fishing_pole])
 Mini_Farm = Room("Mini Farm", "You grew different types of plants here. You didn't like to buy the plants at the store "
-                              "so you grew your own.", None, "Barn", None, None)
+                              "so you grew your own.", None, "Barn", None, None, [seeds])
 Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze. There used to be just plain grass but "
                                   "now there are some wild flowers growing.", None, "Field", "Cave", None, [pen])
 Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see.", None, None,
             None, "Grassy_Hill", [marble])
-Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "Road", None, None)
+Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "Road", None, None, [rose])
 Living_Room = Room("Living Room", "There is nothing inside the living room expect for the west door.", "Kitchen", None,
                    "West_Door", "Hallway", [book])
-West_Door = Room("West Door", "It leads to the West Forest.", None, None, "West_Forest", "Living_Room")
+West_Door = Room("West Door", "It leads to the West Forest.", None, None, "West_Forest", "Living_Room", )
 Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in the south. There is a door leading"
                           "to the East Forest", "Bedroom", "Bathroom", "Living_Room", "East_Door", [camera])
 Kitchen = Room("Moldy Kitchen", "The kitchen hasn't been clean for years.", "Back_Door", "Living_Room",
