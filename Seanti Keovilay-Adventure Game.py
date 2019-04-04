@@ -148,7 +148,8 @@ class FishingPole(Item):
 
 class Hook(Item):
     def __init__(self, name):
-        super(Hook, self).__init__(name, "It was stuck the cupboard in the kitchen.")
+        super(Hook, self).__init__(name, "The hook used to be a silver color but now its a rusty brown color. It seems "
+                                         "to be also bend back a little but it still works.")
         self.FishingPole = None
 
 
@@ -169,7 +170,8 @@ class Sweater(Item):
 
 class Coin(Item):
     def __init__(self, name):
-        super(Coin, self).__init__(name, "The coin is small. It looks like you could fit it in the box.")
+        super(Coin, self).__init__(name, "The coin looks small. It has a carving of a dragon wrap around a fire. The "
+                                         "dragon is a silver color and the fire is a bronze color.")
         self.box = None
 
 
@@ -223,6 +225,11 @@ class Rose(Item):
                                          "enough that it doesn't have any thorns on the stem.")
 
 
+class SakuraFlower(Item):
+    def __init__(self, name):
+        super(SakuraFlower, self).__init__(name, "The flower ")
+
+
 class Character(object):
     def __init__(self, name, weight):
         self.name = name
@@ -252,6 +259,7 @@ notebook = Notebook("Notebook")
 pen = Pen("Pen")
 seeds = Seeds("Seeds")
 rose = Rose("Rose")
+sakuraflower = SakuraFlower("SakuraFlower")
 
 Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car "
                         "and the house. ", "House", "Car", None, None, [phone])
@@ -294,7 +302,8 @@ Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to
 Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "Road", None, None, [rose])
 Living_Room = Room("Living Room", "There is nothing inside the living room expect for the west door.", "Kitchen", None,
                    "West_Door", "Hallway", [book])
-West_Door = Room("West Door", "It leads to the West Forest.", None, None, "West_Forest", "Living_Room", )
+West_Door = Room("West Door", "It leads to the West Forest. The door has a carving of a sakura tree. The colors has "
+                              "been fading for a while.", None, None, "West_Forest", "Living_Room", [sakuraflower])
 Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in the south. There is a door leading"
                           "to the East Forest", "Bedroom", "Bathroom", "Living_Room", "East_Door", [camera])
 Kitchen = Room("Moldy Kitchen", "The kitchen hasn't been clean for years.", "Back_Door", "Living_Room",
@@ -327,25 +336,26 @@ while playing:
             player.move(next_room)
         except KeyError:
             print("I can't go that way.")
-    elif "Pick up " in command:
+    elif "pick up " in command:
         item_name = command[8:]
         found_item = None
         for item in player.current_location.item:
             if item_name == item_name:
                 found_item = item
                 print("You pick up the %s." % item_name)
+                print(current_item.description)
         if found_item is None:
             print("I don't see a item")
         else:
             player.inventory.append(found_item)
             player.current_location.item.remove(found_item)
-            print("You picked it up")
-    elif "Drop item" in command:
-        item_name = command[8:]
+    elif "drop " in command:
+        item_name = command[5:]
         drop_item = None
         for item in player.inventory:
             if item_name == item_name:
                 drop_item = item
+                player.inventory.remove(drop_item)
                 print("You drop the %s." % item_name)
     else:
         print("Command not recognized.")
