@@ -357,5 +357,13 @@ while playing:
                 drop_item = item
                 player.inventory.remove(drop_item)
                 print("You drop the %s." % item_name)
+    elif "combine " in command:
+        words = command.split()
+        if len(words) > 2:
+            item1 = words[1]
+            item2 = words[2]
+        combine_item = None
+        print("You combine %s and %s together." % (item1, item2))
+
     else:
         print("Command not recognized.")
