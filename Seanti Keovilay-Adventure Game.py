@@ -40,6 +40,18 @@ class Player(object):
         room_name = getattr(self.current_location, direction)
         return globals()[room_name]
 
+    def in_inventory(self, name):
+        for item in self.inventory:
+            if item.name == name:
+                return True
+        return False
+
+    def get_item(self, name):
+        for item in self.inventory:
+            if item.name == name:
+                return item
+        return None
+
 
 class Item(object):
     def __init__(self, name, description):
@@ -53,7 +65,6 @@ class Inventory(Item):
         if items is None:
             items = []
         self.items = items
-        self.space = 100
 
     def pick_up_item(self, _item):
         self.items.append(_item)
@@ -114,7 +125,8 @@ class Medicine(Item):
 class Phone(Item):
     def __init__(self, name):
         super(Phone, self).__init__(name, "You listen to music in hope it calms you down. Your parents really didn't "
-                                          "understand your taste in music.")
+                                          "understand your taste in music. The screen is cracked and it doesn't look "
+                                          "like it works anymore.")
         self.energy = 100
 
 
@@ -251,7 +263,7 @@ marble = Marble("Marble")
 camera = Camera("Camera")
 crystal = Crystal("Crystal")
 hook = Hook("Hook")
-book = Book("A Wrinkle in Time")
+book = Book("A Wrinkle in Time book")
 sweater = Sweater("Sweater")
 machete = Machete("Machete")
 stone = Stone("Stone")
@@ -316,6 +328,7 @@ East_Door = Room("East Door", "The door leads to the East Forest.", None, None, 
 player = Player(Road)
 
 directions = ['north', 'south', 'east', 'west']
+short_directions = ['n', 's', 'e', 'w']
 playing = True
 
 while playing:
@@ -327,6 +340,9 @@ while playing:
         for num, current_item in enumerate(player.current_location.item):
             print(str(num + 1) + ": " + current_item.name)
     command = input(">_")
+    if command in short_directions:
+        pos = short_directions.index(command)
+        command = directions[pos]
     if command.lower() in ['q', 'quit', 'exit']:
         print("Bye")
         playing = False
@@ -360,10 +376,10 @@ while playing:
     elif "combine " in command:
         words = command.split()
         if len(words) > 2:
-            item1 = words[1]
-            item2 = words[2]
-        combine_item = None
-        print("You combine %s and %s together." % (item1, item2))
-
+            item1 = player.get_item(words[1])
+            item2 = player.get_item(words[2])
+            if item1 is not None and item2 is not None:
+                print("You combine %s and %s together." % (item1.name, item2.name))
+                player_bag.combine_item(item1, item2)
     else:
         print("Command not recognized.")
