@@ -74,27 +74,6 @@ class Inventory(Item):
         self.items.remove(_item)
         print("You remove the item.")
 
-    def combine_item(self, item1, item2):
-        if self.items is not None:
-            if isinstance(item1, Flashlight) and isinstance(item2, Battery):
-                item1.batteries = item2
-                print("You combine the items together.")
-            if isinstance(item2, Flashlight) and isinstance(item1, Battery):
-                item2.batteries = item1
-                print("You combine the items together.")
-            if isinstance(item1, FishingPole) and isinstance(item2, Hook):
-                item1.hook = item2
-                print("You combine the items together.")
-            if isinstance(item2, FishingPole) and isinstance(item1, Hook):
-                item2.hook = item1
-                print("You combine the items together.")
-            if isinstance(item1, Box) and isinstance(item2, Coin):
-                item1.box = item2
-                print("You combine the items together.")
-            if isinstance(item2, Box) and isinstance(item1, Coin):
-                item2.box = item1
-                print("You combine the items together.")
-
 
 class Flashlight(Item):
     def __init__(self, name):
@@ -167,7 +146,9 @@ class Hook(Item):
 
 class Book(Item):
     def __init__(self, name):
-        super(Book, self).__init__(name, "The book is called 'A Wrinkle in Time'. You loved the book")
+        super(Book, self).__init__(name, "The book is called 'A Wrinkle in Time'. You loved the book when you were "
+                                         "a kid. Your mom would read it to you every night and sometimes your dad "
+                                         "would read for you.")
 
 
 class StuffedAnimal(Item):
@@ -189,12 +170,14 @@ class Coin(Item):
 
 class Crystal(Item):
     def __init__(self, name):
-        super(Crystal, self).__init__(name, "Shine it in the light and it makes a rainbow")
+        super(Crystal, self).__init__(name, "Shine it in the light and it makes a rainbow.")
 
 
 class Box(Item):
     def __init__(self, name):
-        super(Box, self).__init__(name, "The box is dirty from digging it from the ground.")
+        super(Box, self).__init__(name, "The box is dirty from digging it from the ground. Looking closer, the box "
+                                        "has a butterfly design on top with vines of roses going around the box. The "
+                                        "vines are attached to the butterfly.")
         self.coin = None
 
 
@@ -239,7 +222,9 @@ class Rose(Item):
 
 class SakuraFlower(Item):
     def __init__(self, name):
-        super(SakuraFlower, self).__init__(name, "The flower ")
+        super(SakuraFlower, self).__init__(name, "The flower is a beautiful shade of light pink with a healthy green "
+                                                 "stem attached to it. Its inside a clear glass case that is slightly "
+                                                 "dirty but its not chipped nor cracked.")
 
 
 class Character(object):
@@ -275,10 +260,10 @@ sakuraflower = SakuraFlower("SakuraFlower")
 
 Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car "
                         "and the house. ", "House", "Car", None, None, [phone])
-Car = Room("Your Car", "You arrived in the car with a bag inside. You kind of wish you didn't come here but oh well, "
-                       "you're here now.", "Road", None, None, None, [player_bag])
-House = Room("Your Old House", "This is the house you grew up in your whole life. The house seems rundown but "
-                               "still holding up and well. As you walk closer, you see something shinny on the ground.",
+Car = Room("Car", "You arrived in the car with a bag inside. You kind of wish you didn't come here but oh well, "
+                  "you're here now.", "Road", None, None, None, [player_bag])
+House = Room("Old House", "This is the house you grew up in your whole life. The house seems rundown but "
+                          "still holding up and well. As you walk closer, you see something shinny on the ground.",
              "Front_Door", "Road", None, None, [coin])
 Backyard = Room("The Backyard", "You always play here whenever something bad happen inside the house", None,
                 "Back_Door", None, "Big_Tree", [battery])
@@ -318,11 +303,12 @@ West_Door = Room("West Door", "It leads to the West Forest. The door has a carvi
                               "been fading for a while.", None, None, "West_Forest", "Living_Room", [sakuraflower])
 Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in the south. There is a door leading"
                           "to the East Forest", "Bedroom", "Bathroom", "Living_Room", "East_Door", [camera])
-Kitchen = Room("Moldy Kitchen", "The kitchen hasn't been clean for years.", "Back_Door", "Living_Room",
+Kitchen = Room("Kitchen", "The kitchen hasn't been clean for years. There are some plants frowing throught the cracks "
+                          "on the floor.", "Back_Door", "Living_Room",
                None, None, [hook])
 Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None, [keys])
-Bedroom = Room("Your Bedroom", "Everything is still in the same place.", None, "Hallway", None, None, [sweater])
-Bathroom = Room("Broken Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None, [medicine])
+Bedroom = Room("Bedroom", "Everything is still in the same place.", None, "Hallway", None, None, [sweater])
+Bathroom = Room("Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None, [medicine])
 East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East_Forest", {stone})
 
 player = Player(Road)
@@ -373,13 +359,5 @@ while playing:
                 drop_item = item
                 player.inventory.remove(drop_item)
                 print("You drop the %s." % item_name)
-    elif "combine " in command:
-        words = command.split()
-        if len(words) > 2:
-            item1 = player.get_item(words[1])
-            item2 = player.get_item(words[2])
-            if item1 is not None and item2 is not None:
-                print("You combine %s and %s together." % (item1.name, item2.name))
-                player_bag.combine_item(item1, item2)
     else:
         print("Command not recognized.")
