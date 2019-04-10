@@ -303,11 +303,13 @@ West_Door = Room("West Door", "It leads to the West Forest. The door has a carvi
                               "been fading for a while.", None, None, "West_Forest", "Living_Room", [sakuraflower])
 Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in the south. There is a door leading"
                           "to the East Forest", "Bedroom", "Bathroom", "Living_Room", "East_Door", [camera])
-Kitchen = Room("Kitchen", "The kitchen hasn't been clean for years. There are some plants frowing throught the cracks "
+Kitchen = Room("Kitchen", "The kitchen hasn't been clean for years. There are some plants growing through the cracks "
                           "on the floor.", "Back_Door", "Living_Room",
                None, None, [hook])
 Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None, [keys])
-Bedroom = Room("Bedroom", "Everything is still in the same place.", None, "Hallway", None, None, [sweater])
+Bedroom = Room("Bedroom", "Everything is still in the same place. There is your bed in the corner near the window. "
+                          "There is a desk at the other corner with old art supplies.", None, "Hallway", None,
+               None, [sweater])
 Bathroom = Room("Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None, [medicine])
 East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East_Forest", {stone})
 
