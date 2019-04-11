@@ -40,18 +40,6 @@ class Player(object):
         room_name = getattr(self.current_location, direction)
         return globals()[room_name]
 
-    def in_inventory(self, name):
-        for item in self.inventory:
-            if item.name == name:
-                return True
-        return False
-
-    def get_item(self, name):
-        for item in self.inventory:
-            if item.name == name:
-                return item
-        return None
-
 
 class Item(object):
     def __init__(self, name, description):
@@ -227,6 +215,15 @@ class SakuraFlower(Item):
                                                  "dirty but its not chipped nor cracked.")
 
 
+class Note(Item):
+    def __init__(self, name):
+        super(Note, self).__init__(name, "Welcome to the game. The directions are north(n), south(s), east(e), and "
+                                         "west(w). There are no ups or downs. To grab items, type 'pick up' and the "
+                                         "name of the item. To drop items, type 'drop' and the name of the item. Don't "
+                                         "expected to be a fighting type game, its just walking around and pick or "
+                                         "drop items. You don't fight monsters, gain amour or anything else.")
+
+
 class Character(object):
     def __init__(self, name, weight):
         self.name = name
@@ -257,7 +254,10 @@ pen = Pen("Pen")
 seeds = Seeds("Seeds")
 rose = Rose("Rose")
 sakuraflower = SakuraFlower("SakuraFlower")
+note = Note("Note")
 
+Somewhere = Room("Somewhere", "Just read the note and you will understand. The exit is west of you. Type 'pick up' and "
+                              "the name of the item.", None, None, "Road", None, [note])
 Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car "
                         "and the house. ", "House", "Car", None, None, [phone])
 Car = Room("Car", "You arrived in the car with a bag inside. You kind of wish you didn't come here but oh well, "
@@ -313,7 +313,7 @@ Bedroom = Room("Bedroom", "Everything is still in the same place. There is your 
 Bathroom = Room("Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None, [medicine])
 East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East_Forest", {stone})
 
-player = Player(Road)
+player = Player(Somewhere)
 
 directions = ['north', 'south', 'east', 'west']
 short_directions = ['n', 's', 'e', 'w']
@@ -344,10 +344,10 @@ while playing:
         item_name = command[8:]
         found_item = None
         for item in player.current_location.item:
-            if item_name == item_name:
+            if item.name.lower() == item_name.lower():
                 found_item = item
                 print("You pick up the %s." % item_name)
-                print(current_item.description)
+                print(item.description)
         if found_item is None:
             print("I don't see a item")
         else:
@@ -357,9 +357,10 @@ while playing:
         item_name = command[5:]
         drop_item = None
         for item in player.inventory:
-            if item_name == item_name:
+            if item.name.lower() == item_name.lower():
                 drop_item = item
                 player.inventory.remove(drop_item)
+                player.current_location.item.append(drop_item)
                 print("You drop the %s." % item_name)
     else:
         print("Command not recognized.")
