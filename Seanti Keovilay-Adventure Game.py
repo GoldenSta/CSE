@@ -1,3 +1,6 @@
+from termcolor import colored
+
+
 class Room(object):
     def __init__(self, name, description, north=None, south=None, west=None, east=None, _item=None):
         self.name = name
@@ -91,8 +94,8 @@ class Medicine(Item):
 
 class Phone(Item):
     def __init__(self, name):
-        super(Phone, self).__init__(name, "You listen to music in hope it calms you down. Your parents really didn't "
-                                          "understand your taste in music. The screen is cracked and it doesn't look "
+        super(Phone, self).__init__(name, "You listen to music in hope it calms you down. \nYour parents really didn't "
+                                          "understand your taste in music. \nThe screen is cracked and it doesn't look "
                                           "like it works anymore.")
         self.energy = 100
 
@@ -218,10 +221,10 @@ class SakuraFlower(Item):
 class Note(Item):
     def __init__(self, name):
         super(Note, self).__init__(name, "Welcome to the game. The directions are north(n), south(s), east(e), and "
-                                         "west(w). There are no ups or downs. To grab items, type 'pick up' and the "
-                                         "name of the item. To drop items, type 'drop' and the name of the item. Don't "
-                                         "expected to be a fighting type game, its just walking around and pick or "
-                                         "drop items. You don't fight monsters, gain amour or anything else.")
+                                         "\nwest(w). There are no ups or downs. To grab items, type 'pick up' and the "
+                                         "name of the item. \nTo drop items, type 'drop' and the name of the item. "
+                                         "\nDon't expected to be a fighting type game, its just walking around and "
+                                         "pick or drop items. \nYou don't fight monsters, gain amour or anything else.")
 
 
 class Character(object):
@@ -308,9 +311,11 @@ Kitchen = Room("Kitchen", "The kitchen hasn't been clean for years. There are so
                None, None, [hook])
 Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None, [keys])
 Bedroom = Room("Bedroom", "Everything is still in the same place. There is your bed in the corner near the window. "
-                          "There is a desk at the other corner with old art supplies.", None, "Hallway", None,
-               None, [sweater])
-Bathroom = Room("Bathroom", "The place have been collected cobwebs.", "Hallway", None, None, None, [medicine])
+                          "There is a desk at the other corner with old art supplies. The bedroom doesn't have a "
+                          "dresser but a closet instead. There is something inside the closet if you look closer.",
+               None, "Hallway", None, None, [sweater])
+Bathroom = Room("Bathroom", "The place have been collected cobwebs. There is a cupboard with something inside.",
+                "Hallway", None, None, None, [medicine])
 East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East_Forest", {stone})
 
 player = Player(Somewhere)
@@ -320,8 +325,8 @@ short_directions = ['n', 's', 'e', 'w']
 playing = True
 
 while playing:
-    print(player.current_location.name)
-    print(player.current_location.description)
+    print(colored(player.current_location.name, 'cyan'))
+    print(colored(player.current_location.description, 'blue'))
 
     if len(player.current_location.item) > 0:
         print("You found a item.")
@@ -346,7 +351,7 @@ while playing:
         for item in player.current_location.item:
             if item.name.lower() == item_name.lower():
                 found_item = item
-                print("You pick up the %s." % item_name)
+                print(colored("You pick up the %s." % item_name, 'grey'))
                 print(item.description)
         if found_item is None:
             print("I don't see a item")
