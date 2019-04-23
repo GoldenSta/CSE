@@ -102,7 +102,7 @@ class Phone(Item):
 
 class Marble(Item):
     def __init__(self, name):
-        super(Marble, self).__init__(name, "Its a orange marble with a rad star in the middle. The marble looks like "
+        super(Marble, self).__init__(name, "Its a orange marble with a red star in the middle. The marble looks like "
                                            "its made from glass.")
 
 
@@ -224,7 +224,8 @@ class Note(Item):
                                          "\nwest(w). There are no ups or downs. To grab items, type 'pick up' and the "
                                          "name of the item. \nTo drop items, type 'drop' and the name of the item. "
                                          "\nDon't expected to be a fighting type game, its just walking around and "
-                                         "pick or drop items. \nYou don't fight monsters, gain amour or anything else.")
+                                         "pick or drop items. \nYou don't fight monsters, gain amour or anything else. "
+                                         "If you want to exit the game, type quit(q) or exit.")
 
 
 class Character(object):
@@ -297,8 +298,8 @@ Mini_Farm = Room("Mini Farm", "You grew different types of plants here. You didn
                               "so you grew your own.", None, "Barn", None, None, [seeds])
 Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze. There used to be just plain grass but "
                                   "now there are some wild flowers growing.", None, "Field", "Cave", None, [pen])
-Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see.", None, None,
-            None, "Grassy_Hill", [marble])
+Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see. If you walk in closer, you would "
+                              "see a item shaped like a bat.", None, None, None, "Grassy_Hill", [marble])
 Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "Road", None, None, [rose])
 Living_Room = Room("Living Room", "There is nothing inside the living room expect for the west door.", "Kitchen", None,
                    "West_Door", "Hallway", [book])
@@ -329,7 +330,7 @@ while playing:
     print(colored(player.current_location.description, 'blue'))
 
     if len(player.current_location.item) > 0:
-        print("You found a item.")
+        print(colored("You found a item.", 'green'))
         for num, current_item in enumerate(player.current_location.item):
             print(str(num + 1) + ": " + current_item.name)
     command = input(">_")
@@ -337,14 +338,14 @@ while playing:
         pos = short_directions.index(command)
         command = directions[pos]
     if command.lower() in ['q', 'quit', 'exit']:
-        print("Bye")
+        print(colored("Bye", 'red'))
         playing = False
     elif command in directions:
         try:
             next_room = player.find_room(command)
             player.move(next_room)
         except KeyError:
-            print("I can't go that way.")
+            print(colored("I can't go that way.", 'red'))
     elif "pick up " in command:
         item_name = command[8:]
         found_item = None
@@ -368,4 +369,4 @@ while playing:
                 player.current_location.item.append(drop_item)
                 print("You drop the %s." % item_name)
     else:
-        print("Command not recognized.")
+        print(colored("Command not recognized.", 'red'))
