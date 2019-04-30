@@ -27,8 +27,6 @@ def is_first_num_odd(num: str):
         return True
     return False
 
-def is_second_num_even(num: str):
-
 # with open("Book1.csv", 'r') as old_csv:
 #     reader = csv.reader(old_csv)
 #     for row in reader:
@@ -52,6 +50,12 @@ def is_second_num_even(num: str):
 #                 writer.writerow(row)
 #     print("Done")
 
+
+def reverse_it(string):
+    return string[::-1]
+
+
+print(reverse_it("dlroW olleH"))
 
 with open("Book1.csv", 'r') as old_csv:
     with open("MyNewFile.csv", 'w', newline='') as new_csv:
