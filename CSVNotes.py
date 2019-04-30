@@ -28,7 +28,7 @@ def is_first_num_odd(num: str):
     return False
 
 def is_second_num_even(num: str):
-    
+
 # with open("Book1.csv", 'r') as old_csv:
 #     reader = csv.reader(old_csv)
 #     for row in reader:
