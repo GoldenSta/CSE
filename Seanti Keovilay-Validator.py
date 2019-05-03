@@ -16,7 +16,7 @@ def validate(num: str):
             new_list[index] *= 2
             if new_list[index] > 9:
                 new_list[index] -= 9
-                
+
     print(new_list)
 
 
