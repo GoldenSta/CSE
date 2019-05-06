@@ -89,7 +89,7 @@ class Keys(Item):
 class Medicine(Item):
     def __init__(self, name):
         super(Medicine, self).__init__(name, "Sometimes you get sick when you were a child. Sometimes the medicine "
-                                             "would taste funny but made you feel better.")
+                                             "\nwould taste funny but it made you feel better.")
 
 
 class Phone(Item):
@@ -109,8 +109,8 @@ class Marble(Item):
 class Camera(Item):
     def __init__(self, name):
         super(Camera, self).__init__(name, "Taking pictures or videos with the camera is you past time. The lens on "
-                                           "the camera is broken. Its a shame that its broken but maybe the videos or "
-                                           "pictures aren't deleted.")
+                                           "the \ncamera is broken. Its a shame that its broken but maybe the videos "
+                                           "or pictures aren't deleted.")
         self.energy = 100
 
 
@@ -130,15 +130,15 @@ class FishingPole(Item):
 
 class Hook(Item):
     def __init__(self, name):
-        super(Hook, self).__init__(name, "The hook used to be a silver color but now its a rusty brown color. It seems "
-                                         "to be also bend back a little but it still works.")
+        super(Hook, self).__init__(name, "The hook used to be a silver color but now its a rusty brown color. \nIt "
+                                         "seems to be also bend back a little but it still works.")
         self.FishingPole = None
 
 
 class Book(Item):
     def __init__(self, name):
         super(Book, self).__init__(name, "The book is called 'A Wrinkle in Time'. You loved the book when you were "
-                                         "a kid. Your mom would read it to you every night and sometimes your dad "
+                                         "a kid. \nYour mom would read it to you every night and sometimes your dad "
                                          "would read for you.")
 
 
@@ -154,7 +154,7 @@ class Sweater(Item):
 
 class Coin(Item):
     def __init__(self, name):
-        super(Coin, self).__init__(name, "The coin looks small. It has a carving of a dragon wrap around a fire. The "
+        super(Coin, self).__init__(name, "The coin looks small. It has a carving of a dragon wrap around a fire. \nThe "
                                          "dragon is a silver color and the fire is a bronze color.")
         self.box = None
 
@@ -207,15 +207,15 @@ class Seeds(Item):
 class Rose(Item):
     def __init__(self, name):
         super(Rose, self).__init__(name, "Its a blackish red rose sitting by the front door. It still has its petals "
-                                         "intact but it shouldn't since you don't know how its not dead. Weirdly "
+                                         "intact but it \nshouldn't since you don't know how its not dead. Weirdly "
                                          "enough that it doesn't have any thorns on the stem.")
 
 
-class SakuraFlower(Item):
+class Flower(Item):
     def __init__(self, name):
-        super(SakuraFlower, self).__init__(name, "The flower is a beautiful shade of light pink with a healthy green "
-                                                 "stem attached to it. Its inside a clear glass case that is slightly "
-                                                 "dirty but its not chipped nor cracked.")
+        super(Flower, self).__init__(name, "The Sakuraflower is a beautiful shade of light pink with a \nhealthy green "
+                                           "stem attached to it. Its inside a clear glass \ncase that is slightly "
+                                           "dirty but its not chipped nor cracked.")
 
 
 class Note(Item):
@@ -249,7 +249,7 @@ marble = Marble("Marble")
 camera = Camera("Camera")
 crystal = Crystal("Crystal")
 hook = Hook("Hook")
-book = Book("A Wrinkle in Time book")
+book = Book("Book")
 sweater = Sweater("Sweater")
 machete = Machete("Machete")
 stone = Stone("Stone")
@@ -257,17 +257,17 @@ notebook = Notebook("Notebook")
 pen = Pen("Pen")
 seeds = Seeds("Seeds")
 rose = Rose("Rose")
-sakuraflower = SakuraFlower("SakuraFlower")
+flower = Flower("SakuraFlower")
 note = Note("Note")
 
-Somewhere = Room("Somewhere", "Just read the note and you will understand. The exit is west of you. Type 'pick up' and "
-                              "the name of the item.", None, None, "Road", None, [note])
-Road = Room("Old Road", "The road that brought you here. You look around the road just to see nothing but your car "
+Somewhere = Room("Somewhere", "Just read the note and you will understand. \nThe exit is west of you. \nType 'pick up' "
+                              "and the name of the item.", None, None, "Road", None, [note])
+Road = Room("Old Road", "The road that brought you here. You look around the road just \nto see nothing but your car "
                         "and the house. ", "House", "Car", None, None, [phone])
-Car = Room("Car", "You arrived in the car with a bag inside. You kind of wish you didn't come here but oh well, "
+Car = Room("Car", "You arrived in the car with a bag inside. You kind of wish you didn't \ncome here but oh well, "
                   "you're here now.", "Road", None, None, None, [player_bag])
-House = Room("Old House", "This is the house you grew up in your whole life. The house seems rundown but "
-                          "still holding up and well. As you walk closer, you see something shinny on the ground.",
+House = Room("Old House", "This is the house you grew up in your whole life. \nThe house seems rundown but "
+                          "still holding up and well. \nAs you walk closer, you see something shinny on the ground.",
              "Front_Door", "Road", None, None, [coin])
 Backyard = Room("The Backyard", "You always play here whenever something bad happen inside the house", None,
                 "Back_Door", None, "Big_Tree", [battery])
@@ -300,20 +300,20 @@ Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze. Th
                                   "now there are some wild flowers growing.", None, "Field", "Cave", None, [pen])
 Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see. If you walk in closer, you would "
                               "see a item shaped like a bat.", None, None, None, "Grassy_Hill", [marble])
-Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "Road", None, None, [rose])
-Living_Room = Room("Living Room", "There is nothing inside the living room expect for the west door.", "Kitchen", None,
-                   "West_Door", "Hallway", [book])
+Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "House", None, None, [rose])
+Living_Room = Room("Living Room", "There is nothing inside the living room expect for the west door.", "Kitchen",
+                   "Front_Door", "West_Door", "Hallway", [book])
 West_Door = Room("West Door", "It leads to the West Forest. The door has a carving of a sakura tree. The colors has "
-                              "been fading for a while.", None, None, "West_Forest", "Living_Room", [sakuraflower])
+                              "been fading for a while.", None, None, "West_Forest", "Living_Room", [flower])
 Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in the south. There is a door leading"
                           "to the East Forest", "Bedroom", "Bathroom", "Living_Room", "East_Door", [camera])
 Kitchen = Room("Kitchen", "The kitchen hasn't been clean for years. There are some plants growing through the cracks "
                           "on the floor.", "Back_Door", "Living_Room",
                None, None, [hook])
 Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None, [keys])
-Bedroom = Room("Bedroom", "Everything is still in the same place. There is your bed in the corner near the window. "
-                          "There is a desk at the other corner with old art supplies. The bedroom doesn't have a "
-                          "dresser but a closet instead. There is something inside the closet if you look closer.",
+Bedroom = Room("Bedroom", "Everything is still in the same place. \nThere is your bed in the corner near the window. "
+                          "\nThere is a desk at the other corner with old art supplies. \nThe bedroom doesn't have a "
+                          "dresser but a closet instead. \nThere is something inside the closet if you look closer.",
                None, "Hallway", None, None, [sweater])
 Bathroom = Room("Bathroom", "The place have been collected cobwebs. There is a cupboard with something inside.",
                 "Hallway", None, None, None, [medicine])
