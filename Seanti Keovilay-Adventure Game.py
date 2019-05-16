@@ -328,11 +328,12 @@ playing = True
 while playing:
     print(colored(player.current_location.name, 'cyan'))
     print(colored(player.current_location.description, 'blue'))
+    print(colored("Where to next, player?", 'yellow'))
 
     if len(player.current_location.item) > 0:
-        print(colored("You found a item.", 'green'))
+        print(colored("There is a item.", 'magenta'))
         for num, current_item in enumerate(player.current_location.item):
-            print(str(num + 1) + ": " + current_item.name)
+            print(str(num + 1) + ": " + colored(current_item.name, 'magenta'))
     command = input(">_")
     if command in short_directions:
         pos = short_directions.index(command)

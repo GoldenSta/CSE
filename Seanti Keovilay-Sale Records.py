@@ -9,7 +9,6 @@ unit_profit = 0
 
 with open("Sales Records.csv", "r") as old_csv:
     reader = csv.reader(old_csv)
-    total = 0
     for row in reader:
         item = row[2]
         profit = row[13]
@@ -21,20 +20,17 @@ with open("Sales Records.csv", "r") as old_csv:
         try:
             profit_dict[item] += float(profit)
             region_dict[region] += float(profit)
-            unit_dict[unit] += float(profit)
+            unit_dict[item] += float(unit)
         except KeyError:
             profit_dict[item] = float(profit)
             region_dict[region] = float(profit)
-            unit_dict[unit] = float(profit)
+            unit_dict[item] = float(unit)
 
         if profit_dict[item] > top_profit:
             top_profit = profit_dict[item]
 
         if region_dict[region] > region_profit:
             region_profit = region_dict[region]
-
-        if unit_dict[unit] > unit_profit:
-            unit_profit = unit_dict[unit]
 
     for key, value in profit_dict.items():
         if value == top_profit:
@@ -45,7 +41,9 @@ with open("Sales Records.csv", "r") as old_csv:
             print(key)
 
     for key, value in unit_dict.items():
-        if value == unit_profit:
-            print(key)
+        if profit_dict[key] / value > unit_profit:
+            unit_profit = profit_dict[key] / value
 
-print(total)
+    for key, value in unit_dict.items():
+        if profit_dict[key] / value == unit_profit:
+            print(key)
