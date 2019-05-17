@@ -3,6 +3,8 @@ from termcolor import colored
 
 class Room(object):
     def __init__(self, name, description, north=None, south=None, west=None, east=None, _item=None):
+        if _item is None:
+            _item = []
         self.name = name
         self.description = description
         self.north = north
@@ -263,7 +265,7 @@ note = Note("Note")
 Somewhere = Room("Somewhere", "Just read the note and you will understand. \nThe exit is west of you. \nType 'pick up' "
                               "and the name of the item.", None, None, "Road", None, [note])
 Road = Room("Old Road", "The road that brought you here. You look around the road just \nto see nothing but your car "
-                        "and the house. ", "House", "Car", None, None, [phone])
+                        "and the house. And no its not 'Old Town Road'.", "House", "Car", None, None, [phone])
 Car = Room("Car", "You arrived in the car with a bag inside. You kind of wish you didn't \ncome here but oh well, "
                   "you're here now.", "Road", None, None, None, [player_bag])
 House = Room("Old House", "This is the house you grew up in your whole life. \nThe house seems rundown but "
@@ -300,11 +302,11 @@ Grassy_Hill = Room("Grassy Hill", "You loved to cloud gaze here or star gaze. Th
                                   "now there are some wild flowers growing.", None, "Field", "Cave", None, [pen])
 Cave = Room("Abandoned Cave", "You never went inside there as it was too dark to see. If you walk in closer, you would "
                               "see a item shaped like a bat.", None, None, None, "Grassy_Hill", [marble])
-Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "House", None, None, [rose])
+Front_Door = Room("Front Door", "It leads to the living room if open.", "Living_Room", "House", None, None)
 Living_Room = Room("Living Room", "There is nothing inside the living room expect for the west door.", "Kitchen",
                    "Front_Door", "West_Door", "Hallway", [book])
 West_Door = Room("West Door", "It leads to the West Forest. The door has a carving of a sakura tree. The colors has "
-                              "been fading for a while.", None, None, "West_Forest", "Living_Room", [flower])
+                              "been fading for a while.", None, None, "West_Forest", "Living_Room")
 Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in the south. There is a door leading"
                           "to the East Forest", "Bedroom", "Bathroom", "Living_Room", "East_Door", [camera])
 Kitchen = Room("Kitchen", "The kitchen hasn't been clean for years. There are some plants growing through the cracks "
@@ -317,7 +319,7 @@ Bedroom = Room("Bedroom", "Everything is still in the same place. \nThere is you
                None, "Hallway", None, None, [sweater])
 Bathroom = Room("Bathroom", "The place have been collected cobwebs. There is a cupboard with something inside.",
                 "Hallway", None, None, None, [medicine])
-East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East_Forest", {stone})
+East_Door = Room("East Door", "The door leads to the East Forest.", None, None, "Hallway", "East_Forest")
 
 player = Player(Somewhere)
 
@@ -328,7 +330,6 @@ playing = True
 while playing:
     print(colored(player.current_location.name, 'cyan'))
     print(colored(player.current_location.description, 'blue'))
-    print(colored("Where to next, player?", 'yellow'))
 
     if len(player.current_location.item) > 0:
         print(colored("There is a item.", 'magenta'))
@@ -353,10 +354,10 @@ while playing:
         for item in player.current_location.item:
             if item.name.lower() == item_name.lower():
                 found_item = item
-                print(colored("You pick up the %s." % item_name, 'grey'))
+                print(colored("You pick up the %s." % item_name, 'red'))
                 print(item.description)
         if found_item is None:
-            print("I don't see a item")
+            print(colored("I don't see a item", 'red'))
         else:
             player.inventory.append(found_item)
             player.current_location.item.remove(found_item)
@@ -368,6 +369,6 @@ while playing:
                 drop_item = item
                 player.inventory.remove(drop_item)
                 player.current_location.item.append(drop_item)
-                print("You drop the %s." % item_name)
+                print(colored("You drop the %s." % item_name, 'red'))
     else:
         print(colored("Command not recognized.", 'red'))
