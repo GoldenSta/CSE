@@ -72,20 +72,12 @@ class Flashlight(Item):
     def __init__(self, name):
         super(Flashlight, self).__init__(name, "The flashlight is old and the top is crack slightly. At least it "
                                                "still works, maybe.")
-        self.batteries = None
 
 
 class Battery(Item):
     def __init__(self, name):
         super(Battery, self).__init__(name, "You found some batteries. Lucky that you found some for the flashlight "
                                             "but wondered why they were here. Meh, nothing makes sense anyway.")
-        self.flashlight = None
-
-
-class Keys(Item):
-    def __init__(self, name):
-        super(Keys, self).__init__(name, "The keys are rusting from old age. You don't know how long the keys were "
-                                         "here. Maybe around 3 or 4 years.")
 
 
 class Medicine(Item):
@@ -119,7 +111,7 @@ class Camera(Item):
 class Shovel(Item):
     def __init__(self, name):
         super(Shovel, self).__init__(name, "There are two spikes on either side of the handle. The shovel is worn out "
-                                           "and beat up by the years of being used to dig holes.")
+                                           "and beat up by the years of being used to help for the farm.")
 
 
 class FishingPole(Item):
@@ -127,14 +119,12 @@ class FishingPole(Item):
         super(FishingPole, self).__init__(name, "The fishing pole seems like it could need some repair but its too old "
                                                 "already. Looking closer at the fishing pole, the hook is "
                                                 "missing somewhere.")
-        self.hook = None
 
 
 class Hook(Item):
     def __init__(self, name):
         super(Hook, self).__init__(name, "The hook used to be a silver color but now its a rusty brown color. \nIt "
                                          "seems to be also bend back a little but it still works.")
-        self.FishingPole = None
 
 
 class Book(Item):
@@ -146,7 +136,10 @@ class Book(Item):
 
 class StuffedAnimal(Item):
     def __init__(self, name):
-        super(StuffedAnimal, self).__init__(name, "Its a stuffed bunny. The fur seems old and dirty.")
+        super(StuffedAnimal, self).__init__(name, "Its a stuffed bunny which the fur seems old and dirty. This was the "
+                                                  "first and last stuffed animal you were given to by your grandpa "
+                                                  "before he passed away. Since then you would bring it everywhere you "
+                                                  "would go to.")
 
 
 class Sweater(Item):
@@ -158,7 +151,6 @@ class Coin(Item):
     def __init__(self, name):
         super(Coin, self).__init__(name, "The coin looks small. It has a carving of a dragon wrap around a fire. \nThe "
                                          "dragon is a silver color and the fire is a bronze color.")
-        self.box = None
 
 
 class Crystal(Item):
@@ -171,19 +163,12 @@ class Box(Item):
         super(Box, self).__init__(name, "The box is dirty from digging it from the ground. Looking closer, the box "
                                         "has a butterfly design on top with vines of roses going around the box. The "
                                         "vines are attached to the butterfly.")
-        self.coin = None
 
 
 class Machete(Item):
     def __init__(self, name):
         super(Machete, self).__init__(name, "The machete seems old and rusty. It looks like its been under water for "
                                             "a very long time.")
-
-
-class Stone(Item):
-    def __init__(self, name):
-        super(Stone, self).__init__(name, "The stone feels smooth and the color looks beautiful in the light. The "
-                                          "color is a light orange with a bit of yellow around it.")
 
 
 class Notebook(Item):
@@ -204,20 +189,6 @@ class Seeds(Item):
     def __init__(self, name):
         super(Seeds, self).__init__(name, "A packet of sunflower seeds were left in the dust. There are some dust "
                                           "covering the pictures of the sunflower.")
-
-
-class Rose(Item):
-    def __init__(self, name):
-        super(Rose, self).__init__(name, "Its a blackish red rose sitting by the front door. It still has its petals "
-                                         "intact but it \nshouldn't since you don't know how its not dead. Weirdly "
-                                         "enough that it doesn't have any thorns on the stem.")
-
-
-class Flower(Item):
-    def __init__(self, name):
-        super(Flower, self).__init__(name, "The Sakuraflower is a beautiful shade of light pink with a \nhealthy green "
-                                           "stem attached to it. Its inside a clear glass \ncase that is slightly "
-                                           "dirty but its not chipped nor cracked.")
 
 
 class Note(Item):
@@ -242,7 +213,6 @@ battery = Battery("Battery")
 flashlight = Flashlight("Flashlight")
 coin = Coin("Coin")
 box = Box("Box")
-keys = Keys("Keys")
 fishing_pole = FishingPole("FishingPole")
 phone = Phone("Phone")
 stuffed_animal = StuffedAnimal("StuffedAnimal")
@@ -254,12 +224,9 @@ hook = Hook("Hook")
 book = Book("Book")
 sweater = Sweater("Sweater")
 machete = Machete("Machete")
-stone = Stone("Stone")
 notebook = Notebook("Notebook")
 pen = Pen("Pen")
 seeds = Seeds("Seeds")
-rose = Rose("Rose")
-flower = Flower("SakuraFlower")
 note = Note("Note")
 
 Somewhere = Room("Somewhere", "Just read the note and you will understand. \nThe exit is west of you. \nType 'pick up' "
@@ -312,7 +279,7 @@ Hallway = Room("Hallway", "There is a bedroom to the north and the bathroom in t
 Kitchen = Room("Kitchen", "The kitchen hasn't been clean for years. There are some plants growing through the cracks "
                           "on the floor.", "Back_Door", "Living_Room",
                None, None, [hook])
-Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None, [keys])
+Back_Door = Room("Back Door", "It leads to the backyard.", "Backyard", "Kitchen", None, None)
 Bedroom = Room("Bedroom", "Everything is still in the same place. \nThere is your bed in the corner near the window. "
                           "\nThere is a desk at the other corner with old art supplies. \nThe bedroom doesn't have a "
                           "dresser but a closet instead. \nThere is something inside the closet if you look closer.",
@@ -334,8 +301,8 @@ while playing:
     if len(player.current_location.item) > 0:
         print(colored("There is a item.", 'magenta'))
         for num, current_item in enumerate(player.current_location.item):
-            print(str(num + 1) + ": " + colored(current_item.name, 'magenta'))
-    command = input(">_")
+            print(colored(str(num + 1) + ": ", 'magenta') + colored(current_item.name, 'magenta'))
+    command = input(colored(">_", 'green'))
     if command in short_directions:
         pos = short_directions.index(command)
         command = directions[pos]
@@ -355,7 +322,7 @@ while playing:
             if item.name.lower() == item_name.lower():
                 found_item = item
                 print(colored("You pick up the %s." % item_name, 'red'))
-                print(item.description)
+                print(colored(item.description, 'magenta'))
         if found_item is None:
             print(colored("I don't see a item", 'red'))
         else:
