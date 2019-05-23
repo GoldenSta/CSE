@@ -144,7 +144,8 @@ class StuffedAnimal(Item):
 
 class Sweater(Item):
     def __init__(self, name):
-        super(Sweater, self).__init__(name, "The sweater is still intact and it didn't seem ripped.")
+        super(Sweater, self).__init__(name, "The sweater is still intact and it didn't seem ripped. There are some "
+                                            "small holes around the bottom part but still not ripped.")
 
 
 class Coin(Item):
@@ -234,7 +235,7 @@ Somewhere = Room("Somewhere", "Just read the note and you will understand. \nThe
 Road = Room("Old Road", "The road that brought you here. You look around the road just \nto see nothing but your car "
                         "and the house. And no its not 'Old Town Road'.", "House", "Car", None, None, [phone])
 Car = Room("Car", "You arrived in the car with a bag inside. You kind of wish you didn't \ncome here but oh well, "
-                  "you're here now.", "Road", None, None, None, [player_bag])
+                  "you're here now.", "Road", None, None, None)
 House = Room("Old House", "This is the house you grew up in your whole life. \nThe house seems rundown but "
                           "still holding up and well. \nAs you walk closer, you see something shinny on the ground.",
              "Front_Door", "Road", None, None, [coin])
