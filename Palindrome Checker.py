@@ -1,10 +1,10 @@
 import string
 
-string = input("Please a string: \n")
-reverse_str = string[::-1]
+string = input("Please a string: \n").lower()
+reverse_str = ''.join(reversed(string))
 
 
 if string == reverse_str[::-1]:
-    print("This is a Palindrome String")
+    print("{} is a Palindrome String".format(string))
 else:
-    print("This is not a Palindrome String")
+    print("{} isn't not a Palindrome String".format(string))
